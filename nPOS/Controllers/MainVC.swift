@@ -114,6 +114,13 @@ class MainVC: UIViewController {
         return table
     }()
     
+    lazy var seperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "darkBackground")
+        return view
+    }()
+    
     lazy var totalView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -221,6 +228,7 @@ class MainVC: UIViewController {
         cartView.addSubview(counterOfItemsLabel)
         cartView.addSubview(chargeButton)
         cartView.addSubview(cartTableView)
+        cartView.addSubview(seperatorView)
         cartView.addSubview(totalView)
         totalView.addSubview(subTotalLabel)
         totalView.addSubview(taxLabel)
@@ -298,7 +306,12 @@ class MainVC: UIViewController {
         cartTableView.topAnchor.constraint(equalTo: cartLabel.bottomAnchor).isActive = true
         cartTableView.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
         cartTableView.widthAnchor.constraint(equalTo: cartView.widthAnchor).isActive = true
-        cartTableView.bottomAnchor.constraint(equalTo: totalView.topAnchor, constant: -5).isActive = true
+        cartTableView.bottomAnchor.constraint(equalTo: totalView.topAnchor, constant: -30).isActive = true
+        
+        seperatorView.topAnchor.constraint(equalTo: cartTableView.bottomAnchor, constant: 15).isActive = true
+        seperatorView.rightAnchor.constraint(equalTo: cartView.rightAnchor, constant: -10).isActive = true
+        seperatorView.leftAnchor.constraint(equalTo: cartView.leftAnchor, constant: 10).isActive = true
+        seperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         totalView.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
         totalView.widthAnchor.constraint(equalTo: cartView.widthAnchor).isActive = true
@@ -320,7 +333,6 @@ class MainVC: UIViewController {
         totalLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         totalLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        
         subTotalResultLabel.topAnchor.constraint(equalTo: totalView.topAnchor).isActive = true
         subTotalResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
         subTotalResultLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
@@ -335,7 +347,6 @@ class MainVC: UIViewController {
         totalResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
         totalResultLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         totalResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
         
         chargeButton.bottomAnchor.constraint(equalTo: cartView.bottomAnchor).isActive = true
         chargeButton.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
