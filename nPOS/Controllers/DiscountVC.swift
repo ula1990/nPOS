@@ -10,26 +10,31 @@ import UIKit
 
 class DiscountVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate func configureNavBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "dismiss"), style: .plain, target: self, action:#selector(handleDismiss))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationItem.title = "Discount"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.9)
+        configureNavBar()
     }
-    */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.9)
+        configureNavBar()
+        
+    }
+    
+    @objc fileprivate func handleDismiss() {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
