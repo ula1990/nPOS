@@ -49,6 +49,9 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
         itemInCart.append(item)
         self.cartTableView.reloadData()
         counterOfItemsLabel.text = String(itemInCart.count)
+        subTotalResultLabel.text = "$" + String(itemInCart.compactMap({ Double($0.price!) }).reduce(0, +))
+        taxResultLabel.text = "$" +  String(itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +))
+        totalResultLabel.text = "$" +  String(Double(itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +)) + Double(itemInCart.compactMap({ Double($0.price!) }).reduce(0, +)))
         }else if collectionView == categoryCollectionView{
             print(Error.self)
         }else{

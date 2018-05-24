@@ -14,13 +14,15 @@ class Item: NSObject {
     var name: String?
     var imageName: String?
     var price: Double?
+    var vat: Double?
     var desc: String?
     
-    init(id: String, name: String,imageName: String, price: Double, desc: String){
+    init(id: String, name: String,imageName: String, price: Double,vat: Double, desc: String){
         self.id = id
         self.name = name
         self.imageName = imageName
         self.price = price
+        self.vat = vat
         self.desc = desc
         
     }

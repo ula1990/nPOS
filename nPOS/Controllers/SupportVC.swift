@@ -37,7 +37,4 @@ class SupportVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 }

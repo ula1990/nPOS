@@ -22,6 +22,19 @@ class MainVC: UIViewController {
     var itemInCart: [Item] = []
     var categoryList: [Category] = []
     
+    func pulsate() {
+        
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 0.6
+        pulse.fromValue = 0.95
+        pulse.toValue = 1.0
+        pulse.autoreverses = true
+        pulse.repeatCount = 2
+        pulse.initialVelocity = 0.5
+        pulse.damping = 1.0
+
+    }
+    
     lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
@@ -463,25 +476,25 @@ class MainVC: UIViewController {
     
     func temporaryArray()->[Item]{
         var array: [Item] = []
-        let item1 = Item(id: "1", name: "Big Mac Burger", imageName: "burger1", price: 8.99, desc: "Nice")
-        let item2 = Item(id: "2", name: "Chiken Burger", imageName: "burger2", price: 22.99, desc: "Nice")
-        let item3 = Item(id: "3", name: "CheesBurger", imageName: "burger3", price: 44.99, desc: "Nice")
-        let item4 = Item(id: "4", name: "El Maco Burger", imageName: "burger1", price: 2.99, desc: "Nice")
-        let item5 = Item(id: "5", name: "Leeroy Burger", imageName: "burger2", price: 0.99, desc: "Nice")
-        let item6 = Item(id: "6", name: "Ula Burger", imageName: "burger3", price: 35.99, desc: "Nice")
-        let item7 = Item(id: "7", name: "New Burger", imageName: "burger2", price: 5.99, desc: "Nice")
-        let item8 = Item(id: "8", name: "Old Burger", imageName: "burger1", price: 7.99, desc: "Nice")
-        let item9 = Item(id: "9", name: "Big Mac Burger", imageName: "burger2", price: 21.99, desc: "Nice")
-        let item10 = Item(id: "10", name: "Big Mac Burger", imageName: "burger3", price: 8.99, desc: "Nice")
-        let item11 = Item(id: "11", name: "Big Mac Burger", imageName: "burger1", price: 8.99, desc: "Nice")
-        let item12 = Item(id: "12", name: "Big Mac Burger", imageName: "burger2", price: 8.99, desc: "Nice")
-        let item13 = Item(id: "13", name: "Big Mac Burger", imageName: "burger3", price: 3.99, desc: "Nice")
-        let item14 = Item(id: "14", name: "Big Mac Burger", imageName: "burger1", price: 9.99, desc: "Nice")
-        let item15 = Item(id: "15", name: "Big Mac Burger", imageName: "burger3", price: 6.99, desc: "Nice")
-        let item16 = Item(id: "16", name: "Big Mac Burger", imageName: "burger2", price: 2.99, desc: "Nice")
-        let item17 = Item(id: "17", name: "Big Mac Burger", imageName: "burger3", price: 8.99, desc: "Nice")
-        let item18 = Item(id: "18", name: "Boring Burger", imageName: "burger2", price: 8.99, desc: "Nice")
-        let item19 = Item(id: "19", name: "Awesome Burger", imageName: "burger1", price: 8.99, desc: "Nice")
+        let item1 = Item(id: "1", name: "Big Mac Burger", imageName: "burger1", price: 8.99, vat: 0.55, desc: "Nice")
+        let item2 = Item(id: "2", name: "Chiken Burger", imageName: "burger2", price: 22.99, vat: 2.0, desc: "Nice")
+        let item3 = Item(id: "3", name: "CheesBurger", imageName: "burger3", price: 44.99, vat: 4.65, desc: "Nice")
+        let item4 = Item(id: "4", name: "El Maco Burger", imageName: "burger1", price: 2.99, vat: 0.20, desc: "Nice")
+        let item5 = Item(id: "5", name: "Leeroy Burger", imageName: "burger2", price: 0.99, vat: 0.12, desc: "Nice")
+        let item6 = Item(id: "6", name: "Ula Burger", imageName: "burger3", price: 35.99, vat: 3.40, desc: "Nice")
+        let item7 = Item(id: "7", name: "New Burger", imageName: "burger2", price: 5.99, vat: 0.51, desc: "Nice")
+        let item8 = Item(id: "8", name: "Old Burger", imageName: "burger1", price: 7.99, vat: 0.79, desc: "Nice")
+        let item9 = Item(id: "9", name: "Big Mac Burger", imageName: "burger2", price: 21.99, vat: 2.14, desc: "Nice")
+        let item10 = Item(id: "10", name: "Premium Burger", imageName: "burger3", price: 8.99, vat: 0.55, desc: "Nice")
+        let item11 = Item(id: "11", name: "Double Burger", imageName: "burger1", price: 3.99, vat: 0.32, desc: "Nice")
+        let item12 = Item(id: "12", name: "Mix Burger", imageName: "burger2", price: 9.99, vat: 0.99, desc: "Nice")
+        let item13 = Item(id: "13", name: "Big Mac Burger", imageName: "burger3", price: 3.99, vat: 0.44, desc: "Nice")
+        let item14 = Item(id: "14", name: "Big Mac Burger", imageName: "burger1", price: 9.99, vat: 0.99, desc: "Nice")
+        let item15 = Item(id: "15", name: "Big Mac Burger", imageName: "burger3", price: 6.99, vat: 0.65, desc: "Nice")
+        let item16 = Item(id: "16", name: "Big Mac Burger", imageName: "burger2", price: 2.99, vat: 0.23, desc: "Nice")
+        let item17 = Item(id: "17", name: "Big Mac Burger", imageName: "burger3", price: 8.99, vat: 0.87, desc: "Nice")
+        let item18 = Item(id: "18", name: "Boring Burger", imageName: "burger2", price: 8.99, vat: 0.87, desc: "Nice")
+        let item19 = Item(id: "19", name: "Awesome Burger", imageName: "burger1", price: 8.99, vat: 0.87, desc: "Nice")
         
         array.append(item1)
         array.append(item2)
@@ -516,7 +529,6 @@ class MainVC: UIViewController {
         let item7 = Category(id: 7, name: "Beers", color: UIColor(named: "7")!)
         let item8 = Category(id: 8, name: "Wine", color: UIColor(named: "8")!)
 
-        
         array.append(item1)
         array.append(item2)
         array.append(item3)
@@ -528,8 +540,7 @@ class MainVC: UIViewController {
 
         return array
     }
-    
-    
+
     func temporaryMenuArray()->[Menu]{
         var array: [Menu] = []
         let item1 = Menu(name: "Main", viewController: MainVC())
@@ -550,7 +561,6 @@ class MainVC: UIViewController {
         array.append(item7)
         array.append(item8)
 
-        
         return array
     }
 

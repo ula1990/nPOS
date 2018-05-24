@@ -203,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				C076DE9820B49170006EC3C2 /* LoginController.swift */,
-				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
 				C076DEA320B49386006EC3C2 /* MainVC.swift */,
 				C07D1C6020B6A3BD00FA3F0C /* TableVC.swift */,
 				C07D1C6220B6A3D500FA3F0C /* DiscountVC.swift */,
@@ -223,10 +222,6 @@
 				C076DEAF20B4B7B7006EC3C2 /* Item.swift */,
 				C07D1C5320B6A14800FA3F0C /* MenuModel.swift */,
 				C07D1C4F20B5B55600FA3F0C /* Category.swift */,
-				C076DEAD20B4B765006EC3C2 /* CartCell.swift */,
-				C076DEB120B4BBAC006EC3C2 /* ItemCell.swift */,
-				C07D1C5120B5FED600FA3F0C /* MenuCell.swift */,
-				C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,10 +231,47 @@
 			children = (
 				C076DE9C20B491CE006EC3C2 /* Alert.swift */,
 				C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */,
-				C076DEAB20B4A964006EC3C2 /* MainTableExtension.swift */,
-				C076DEB520B4BC10006EC3C2 /* MainCollectionExtension.swift */,
+				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
+				C0827A6920B6C87A00BA32C5 /* Tables */,
+				C0827A6A20B6C88C00BA32C5 /* Collections */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C0827A6720B6C85300BA32C5 /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				C076DEB120B4BBAC006EC3C2 /* ItemCell.swift */,
+				C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */,
+				C07D1C5120B5FED600FA3F0C /* MenuCell.swift */,
+			);
+			path = CollectionCells;
+			sourceTree = "<group>";
+		};
+		C0827A6820B6C86A00BA32C5 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				C076DEAD20B4B765006EC3C2 /* CartCell.swift */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		C0827A6920B6C87A00BA32C5 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				C076DEAB20B4A964006EC3C2 /* MainTableExtension.swift */,
+				C0827A6820B6C86A00BA32C5 /* TableCells */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
+		C0827A6A20B6C88C00BA32C5 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				C076DEB520B4BC10006EC3C2 /* MainCollectionExtension.swift */,
+				C0827A6720B6C85300BA32C5 /* CollectionCells */,
+			);
+			path = Collections;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
