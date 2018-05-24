@@ -32,7 +32,6 @@ class MainVC: UIViewController {
         pulse.repeatCount = 2
         pulse.initialVelocity = 0.5
         pulse.damping = 1.0
-
     }
     
     lazy var categoryCollectionView: UICollectionView = {
@@ -102,6 +101,13 @@ class MainVC: UIViewController {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
+    }()
+    
+    lazy var seperatorCart: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "darkBackground")
+        return view
     }()
     
     lazy var counterOfItemsLabel: UILabel = {
@@ -200,7 +206,17 @@ class MainVC: UIViewController {
         label.textAlignment = .right
         return label
     }()
-    
+    lazy var  clearButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor =  UIColor(named: "background")
+        button.setTitle("Clear", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white.withAlphaComponent(0.8), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19 )
+        button.addTarget(self, action: #selector(handleClear), for: .touchUpInside)
+        return button
+        
+    }()
     
     lazy var  chargeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -238,10 +254,12 @@ class MainVC: UIViewController {
         cartView.addSubview(cartLabel)
         cartView.addSubview(tableLabel)
         cartView.addSubview(cartLogo)
+        cartView.addSubview(seperatorCart)
         cartView.addSubview(counterOfItemsLabel)
         cartView.addSubview(chargeButton)
         cartView.addSubview(cartTableView)
         cartView.addSubview(seperatorView)
+        cartView.addSubview(clearButton)
         cartView.addSubview(totalView)
         totalView.addSubview(subTotalLabel)
         totalView.addSubview(taxLabel)
@@ -316,7 +334,12 @@ class MainVC: UIViewController {
         counterOfItemsLabel.widthAnchor.constraint(equalToConstant: 20).isActive = true
         counterOfItemsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        cartTableView.topAnchor.constraint(equalTo: cartLabel.bottomAnchor).isActive = true
+        seperatorCart.topAnchor.constraint(equalTo: cartLogo.bottomAnchor, constant: 15).isActive = true
+        seperatorCart.rightAnchor.constraint(equalTo: cartView.rightAnchor, constant: -10).isActive = true
+        seperatorCart.leftAnchor.constraint(equalTo: cartView.leftAnchor, constant: 10).isActive = true
+        seperatorCart.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        cartTableView.topAnchor.constraint(equalTo: cartLabel.bottomAnchor, constant: 20).isActive = true
         cartTableView.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
         cartTableView.widthAnchor.constraint(equalTo: cartView.widthAnchor).isActive = true
         cartTableView.bottomAnchor.constraint(equalTo: totalView.topAnchor, constant: -30).isActive = true
@@ -329,7 +352,7 @@ class MainVC: UIViewController {
         totalView.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
         totalView.widthAnchor.constraint(equalTo: cartView.widthAnchor).isActive = true
         totalView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        totalView.bottomAnchor.constraint(equalTo: chargeButton.topAnchor, constant: -10).isActive = true
+        totalView.bottomAnchor.constraint(equalTo: clearButton.topAnchor, constant: -20).isActive = true
         
         subTotalLabel.topAnchor.constraint(equalTo: totalView.topAnchor).isActive = true
         subTotalLabel.leftAnchor.constraint(equalTo: totalView.leftAnchor, constant: 10).isActive = true
@@ -348,18 +371,24 @@ class MainVC: UIViewController {
         
         subTotalResultLabel.topAnchor.constraint(equalTo: totalView.topAnchor).isActive = true
         subTotalResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
-        subTotalResultLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        subTotalResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         subTotalResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         taxResultLabel.topAnchor.constraint(equalTo: subTotalLabel.bottomAnchor).isActive = true
         taxResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
-        taxResultLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        taxResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         taxResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         totalResultLabel.topAnchor.constraint(equalTo: taxLabel.bottomAnchor).isActive = true
         totalResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
-        totalResultLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        totalResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         totalResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        clearButton.bottomAnchor.constraint(equalTo: chargeButton.topAnchor).isActive = true
+        clearButton.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
+        clearButton.leftAnchor.constraint(equalTo: cartView.leftAnchor).isActive = true
+        clearButton.rightAnchor.constraint(equalTo: cartView.rightAnchor).isActive = true
+        clearButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         chargeButton.bottomAnchor.constraint(equalTo: cartView.bottomAnchor).isActive = true
         chargeButton.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
@@ -368,7 +397,7 @@ class MainVC: UIViewController {
         chargeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         categoryCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
-        categoryCollectionView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.35).isActive = true
+        categoryCollectionView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.34).isActive = true
         categoryCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
         categoryCollectionView.rightAnchor.constraint(equalTo: cartView.leftAnchor,constant: -20).isActive = true
         
@@ -390,6 +419,15 @@ class MainVC: UIViewController {
     @objc func handlePay(){
         
         
+    }
+    
+    @objc func handleClear(){
+        itemInCart.removeAll()
+        cartTableView.reloadData()
+        counterOfItemsLabel.text = "0"
+        totalResultLabel.text = "$0"
+        taxResultLabel.text = totalResultLabel.text
+        subTotalResultLabel.text = totalResultLabel.text
     }
 
     func setupNavBarWithUser(user: User){
@@ -488,7 +526,7 @@ class MainVC: UIViewController {
         let item10 = Item(id: "10", name: "Premium Burger", imageName: "burger3", price: 8.99, vat: 0.55, desc: "Nice")
         let item11 = Item(id: "11", name: "Double Burger", imageName: "burger1", price: 3.99, vat: 0.32, desc: "Nice")
         let item12 = Item(id: "12", name: "Mix Burger", imageName: "burger2", price: 9.99, vat: 0.99, desc: "Nice")
-        let item13 = Item(id: "13", name: "Big Mac Burger", imageName: "burger3", price: 3.99, vat: 0.44, desc: "Nice")
+        let item13 = Item(id: "13", name: "Julia Burger", imageName: "burger3", price: 3.99, vat: 0.44, desc: "Nice")
         let item14 = Item(id: "14", name: "Big Mac Burger", imageName: "burger1", price: 9.99, vat: 0.99, desc: "Nice")
         let item15 = Item(id: "15", name: "Big Mac Burger", imageName: "burger3", price: 6.99, vat: 0.65, desc: "Nice")
         let item16 = Item(id: "16", name: "Big Mac Burger", imageName: "burger2", price: 2.99, vat: 0.23, desc: "Nice")
