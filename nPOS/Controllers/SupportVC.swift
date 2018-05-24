@@ -23,12 +23,12 @@ class SupportVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "background")
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.9)
         configureNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        view.backgroundColor = UIColor(named: "background")
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.9)
         configureNavBar()
         
     }

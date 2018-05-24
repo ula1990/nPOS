@@ -37,6 +37,9 @@
 		C07D1C5F20B6A38B00FA3F0C /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D1C5E20B6A38B00FA3F0C /* SupportVC.swift */; };
 		C07D1C6120B6A3BD00FA3F0C /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D1C6020B6A3BD00FA3F0C /* TableVC.swift */; };
 		C07D1C6320B6A3D500FA3F0C /* DiscountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D1C6220B6A3D500FA3F0C /* DiscountVC.swift */; };
+		C0827A6C20B6F1B500BA32C5 /* GiftCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A6B20B6F1B500BA32C5 /* GiftCardCell.swift */; };
+		C0827A6E20B6F1CB00BA32C5 /* GiftCardCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */; };
+		C0827A7020B6F24900BA32C5 /* GiftCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A6F20B6F24900BA32C5 /* GiftCard.swift */; };
 		C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +99,9 @@
 		C07D1C5E20B6A38B00FA3F0C /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		C07D1C6020B6A3BD00FA3F0C /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		C07D1C6220B6A3D500FA3F0C /* DiscountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountVC.swift; sourceTree = "<group>"; };
+		C0827A6B20B6F1B500BA32C5 /* GiftCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardCell.swift; sourceTree = "<group>"; };
+		C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardCollection.swift; sourceTree = "<group>"; };
+		C0827A6F20B6F24900BA32C5 /* GiftCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCard.swift; sourceTree = "<group>"; };
 		C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +226,7 @@
 			children = (
 				C076DE9520B4905A006EC3C2 /* User.swift */,
 				C076DEAF20B4B7B7006EC3C2 /* Item.swift */,
+				C0827A6F20B6F24900BA32C5 /* GiftCard.swift */,
 				C07D1C5320B6A14800FA3F0C /* MenuModel.swift */,
 				C07D1C4F20B5B55600FA3F0C /* Category.swift */,
 			);
@@ -244,6 +251,7 @@
 				C076DEB120B4BBAC006EC3C2 /* ItemCell.swift */,
 				C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */,
 				C07D1C5120B5FED600FA3F0C /* MenuCell.swift */,
+				C0827A6B20B6F1B500BA32C5 /* GiftCardCell.swift */,
 			);
 			path = CollectionCells;
 			sourceTree = "<group>";
@@ -269,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				C076DEB520B4BC10006EC3C2 /* MainCollectionExtension.swift */,
+				C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */,
 				C0827A6720B6C85300BA32C5 /* CollectionCells */,
 			);
 			path = Collections;
@@ -458,6 +467,7 @@
 				C076DE9B20B491A8006EC3C2 /* LoginControllerHandlers.swift in Sources */,
 				C076DE9620B4905A006EC3C2 /* User.swift in Sources */,
 				C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */,
+				C0827A6E20B6F1CB00BA32C5 /* GiftCardCollection.swift in Sources */,
 				C07D1C5620B6A2D100FA3F0C /* FindItemVC.swift in Sources */,
 				C07D1C5F20B6A38B00FA3F0C /* SupportVC.swift in Sources */,
 				C076DE6C20B48FAB006EC3C2 /* nPOS.xcdatamodeld in Sources */,
@@ -469,12 +479,14 @@
 				C07D1C6320B6A3D500FA3F0C /* DiscountVC.swift in Sources */,
 				C076DEA620B493EE006EC3C2 /* ImageCacheExtensions.swift in Sources */,
 				C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */,
+				C0827A6C20B6F1B500BA32C5 /* GiftCardCell.swift in Sources */,
 				C076DE9920B49170006EC3C2 /* LoginController.swift in Sources */,
 				C076DE9D20B491CE006EC3C2 /* Alert.swift in Sources */,
 				C07D1C5020B5B55600FA3F0C /* Category.swift in Sources */,
 				C076DEAC20B4A964006EC3C2 /* MainTableExtension.swift in Sources */,
 				C07D1C5D20B6A34500FA3F0C /* CashDrawerVC.swift in Sources */,
 				C076DEB620B4BC10006EC3C2 /* MainCollectionExtension.swift in Sources */,
+				C0827A7020B6F24900BA32C5 /* GiftCard.swift in Sources */,
 				C07D1C5220B5FED600FA3F0C /* MenuCell.swift in Sources */,
 				C076DEA420B49386006EC3C2 /* MainVC.swift in Sources */,
 			);

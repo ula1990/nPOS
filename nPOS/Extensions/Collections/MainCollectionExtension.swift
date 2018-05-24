@@ -57,7 +57,9 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
         }else{
             let menu = menuBar[indexPath.row]
             let menuVC = UINavigationController(rootViewController: menu.viewController!)
+            menuVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
             present(menuVC, animated: true, completion: nil)
+            
         }
     }
     
