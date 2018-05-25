@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol transferSelectedColorDelegate{
-    func colorReceived(selectedColor: UIColor? )
-}
-
 class SelectColorVC: UIViewController {
     
     var colorList: [Color] = []
@@ -27,7 +23,6 @@ class SelectColorVC: UIViewController {
         view.backgroundColor = UIColor(named: "background")
         return view
     }()
-    
     
     lazy var infoLabel: UILabel = {
         let label = UILabel()
@@ -90,8 +85,6 @@ class SelectColorVC: UIViewController {
         dismissButton.bottomAnchor.constraint(equalTo: selectColorView.bottomAnchor,constant: -5).isActive = true
         dismissButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         dismissButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        
     }
     
     override func viewDidLoad() {
@@ -108,6 +101,7 @@ class SelectColorVC: UIViewController {
         colorList = temporaryColorArray()
         
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0)

@@ -11,6 +11,6 @@ import UIKit
 
 extension TableVC: transferSelectedColorDelegate{
     func colorReceived(selectedColor: UIColor?) {
-        selectColorButton.backgroundColor = selectedColor
+        self.selectColorButton.backgroundColor = selectedColor
     }
 }

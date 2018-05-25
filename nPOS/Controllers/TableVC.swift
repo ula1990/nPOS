@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol transferSelectedColorDelegate: class{
+    func colorReceived(selectedColor: UIColor? )
+}
+
 class TableVC: UIViewController {
 
     let tableCellId = "tableCellId"
@@ -133,7 +138,7 @@ class TableVC: UIViewController {
         selectTableCategoryLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         selectTableCategoryLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
-        selectColorButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 10).isActive = true
+        selectColorButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 5).isActive = true
         selectColorButton.centerYAnchor.constraint(equalTo: selectTableCategoryLabel.centerYAnchor).isActive = true
         selectColorButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         selectColorButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
@@ -161,7 +166,6 @@ class TableVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(1)
         configureNavBar()
-        
     }
     
     @objc fileprivate func handleDismiss() {
@@ -173,7 +177,6 @@ class TableVC: UIViewController {
         colorVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         present(colorVC, animated: true, completion: nil)
     }
-    
     
     func temporaryTableArray()->[Table]{
         var array: [Table] = []
@@ -195,7 +198,6 @@ class TableVC: UIViewController {
         let item16 = Table(id: 16,name: "Tabel",categoryColor: UIColor(named: "1")!)
         let item17 = Table(id: 17,name: "Stuff",categoryColor: UIColor(named: "1")!)
     
-        
         array.append(item1)
         array.append(item2)
         array.append(item3)
