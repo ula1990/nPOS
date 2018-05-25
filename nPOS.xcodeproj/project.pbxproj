@@ -40,7 +40,14 @@
 		C0827A6C20B6F1B500BA32C5 /* GiftCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A6B20B6F1B500BA32C5 /* GiftCardCell.swift */; };
 		C0827A6E20B6F1CB00BA32C5 /* GiftCardCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */; };
 		C0827A7020B6F24900BA32C5 /* GiftCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A6F20B6F24900BA32C5 /* GiftCard.swift */; };
+		C0827A7220B8063700BA32C5 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A7120B8063700BA32C5 /* TableCell.swift */; };
+		C0827A7420B8066500BA32C5 /* TableCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A7320B8066500BA32C5 /* TableCollectionExtension.swift */; };
+		C0827A7620B8067E00BA32C5 /* Tabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A7520B8067D00BA32C5 /* Tabel.swift */; };
 		C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */; };
+		C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81DB20B82AB3002C5E6D /* SelectColorVC.swift */; };
+		C0ED81DE20B82E6A002C5E6D /* SelectColorPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81DD20B82E6A002C5E6D /* SelectColorPickerExtension.swift */; };
+		C0ED81E020B82F90002C5E6D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81DF20B82F90002C5E6D /* Color.swift */; };
+		C0ED81E320B84258002C5E6D /* TransferTableInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +109,14 @@
 		C0827A6B20B6F1B500BA32C5 /* GiftCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardCell.swift; sourceTree = "<group>"; };
 		C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardCollection.swift; sourceTree = "<group>"; };
 		C0827A6F20B6F24900BA32C5 /* GiftCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCard.swift; sourceTree = "<group>"; };
+		C0827A7120B8063700BA32C5 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		C0827A7320B8066500BA32C5 /* TableCollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCollectionExtension.swift; sourceTree = "<group>"; };
+		C0827A7520B8067D00BA32C5 /* Tabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabel.swift; sourceTree = "<group>"; };
 		C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		C0ED81DB20B82AB3002C5E6D /* SelectColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorVC.swift; sourceTree = "<group>"; };
+		C0ED81DD20B82E6A002C5E6D /* SelectColorPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorPickerExtension.swift; sourceTree = "<group>"; };
+		C0ED81DF20B82F90002C5E6D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTableInfoExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +225,7 @@
 				C076DE9820B49170006EC3C2 /* LoginController.swift */,
 				C076DEA320B49386006EC3C2 /* MainVC.swift */,
 				C07D1C6020B6A3BD00FA3F0C /* TableVC.swift */,
+				C0ED81DB20B82AB3002C5E6D /* SelectColorVC.swift */,
 				C07D1C6220B6A3D500FA3F0C /* DiscountVC.swift */,
 				C07D1C5520B6A2D100FA3F0C /* FindItemVC.swift */,
 				C07D1C5720B6A2F600FA3F0C /* TransactionsVC.swift */,
@@ -225,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				C076DE9520B4905A006EC3C2 /* User.swift */,
+				C0ED81DF20B82F90002C5E6D /* Color.swift */,
+				C0827A7520B8067D00BA32C5 /* Tabel.swift */,
 				C076DEAF20B4B7B7006EC3C2 /* Item.swift */,
 				C0827A6F20B6F24900BA32C5 /* GiftCard.swift */,
 				C07D1C5320B6A14800FA3F0C /* MenuModel.swift */,
@@ -239,6 +256,8 @@
 				C076DE9C20B491CE006EC3C2 /* Alert.swift */,
 				C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */,
 				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
+				C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */,
+				C0ED81E120B83050002C5E6D /* Pickers */,
 				C0827A6920B6C87A00BA32C5 /* Tables */,
 				C0827A6A20B6C88C00BA32C5 /* Collections */,
 			);
@@ -252,6 +271,7 @@
 				C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */,
 				C07D1C5120B5FED600FA3F0C /* MenuCell.swift */,
 				C0827A6B20B6F1B500BA32C5 /* GiftCardCell.swift */,
+				C0827A7120B8063700BA32C5 /* TableCell.swift */,
 			);
 			path = CollectionCells;
 			sourceTree = "<group>";
@@ -278,9 +298,18 @@
 			children = (
 				C076DEB520B4BC10006EC3C2 /* MainCollectionExtension.swift */,
 				C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */,
+				C0827A7320B8066500BA32C5 /* TableCollectionExtension.swift */,
 				C0827A6720B6C85300BA32C5 /* CollectionCells */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		C0ED81E120B83050002C5E6D /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				C0ED81DD20B82E6A002C5E6D /* SelectColorPickerExtension.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,23 +493,30 @@
 			files = (
 				C07D1C5B20B6A31F00FA3F0C /* GiftCardVC.swift in Sources */,
 				C076DEB220B4BBAC006EC3C2 /* ItemCell.swift in Sources */,
+				C0ED81E020B82F90002C5E6D /* Color.swift in Sources */,
 				C076DE9B20B491A8006EC3C2 /* LoginControllerHandlers.swift in Sources */,
+				C0827A7420B8066500BA32C5 /* TableCollectionExtension.swift in Sources */,
 				C076DE9620B4905A006EC3C2 /* User.swift in Sources */,
+				C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */,
 				C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */,
 				C0827A6E20B6F1CB00BA32C5 /* GiftCardCollection.swift in Sources */,
 				C07D1C5620B6A2D100FA3F0C /* FindItemVC.swift in Sources */,
 				C07D1C5F20B6A38B00FA3F0C /* SupportVC.swift in Sources */,
+				C0ED81DE20B82E6A002C5E6D /* SelectColorPickerExtension.swift in Sources */,
 				C076DE6C20B48FAB006EC3C2 /* nPOS.xcdatamodeld in Sources */,
 				C07D1C5420B6A14800FA3F0C /* MenuModel.swift in Sources */,
+				C0827A7220B8063700BA32C5 /* TableCell.swift in Sources */,
 				C07D1C6120B6A3BD00FA3F0C /* TableVC.swift in Sources */,
 				C07D1C5820B6A2F600FA3F0C /* TransactionsVC.swift in Sources */,
 				C076DEB020B4B7B7006EC3C2 /* Item.swift in Sources */,
 				C076DEAE20B4B765006EC3C2 /* CartCell.swift in Sources */,
 				C07D1C6320B6A3D500FA3F0C /* DiscountVC.swift in Sources */,
 				C076DEA620B493EE006EC3C2 /* ImageCacheExtensions.swift in Sources */,
+				C0827A7620B8067E00BA32C5 /* Tabel.swift in Sources */,
 				C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */,
 				C0827A6C20B6F1B500BA32C5 /* GiftCardCell.swift in Sources */,
 				C076DE9920B49170006EC3C2 /* LoginController.swift in Sources */,
+				C0ED81E320B84258002C5E6D /* TransferTableInfoExtension.swift in Sources */,
 				C076DE9D20B491CE006EC3C2 /* Alert.swift in Sources */,
 				C07D1C5020B5B55600FA3F0C /* Category.swift in Sources */,
 				C076DEAC20B4A964006EC3C2 /* MainTableExtension.swift in Sources */,

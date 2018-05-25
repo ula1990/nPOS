@@ -397,16 +397,17 @@ class MainVC: UIViewController {
         chargeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         categoryCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
-        categoryCollectionView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.34).isActive = true
+        categoryCollectionView.heightAnchor.constraint(equalToConstant: 262).isActive = true
         categoryCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
         categoryCollectionView.rightAnchor.constraint(equalTo: cartView.leftAnchor,constant: -20).isActive = true
         
-        itemCollectionView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant:80).isActive = true
-        itemCollectionView.bottomAnchor.constraint(equalTo: menuCollectionView.topAnchor, constant: -10).isActive = true
+        itemCollectionView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant:5).isActive = true
+        
+        itemCollectionView.bottomAnchor.constraint(equalTo: menuCollectionView.topAnchor, constant: -5).isActive = true
         itemCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
         itemCollectionView.rightAnchor.constraint(equalTo: cartView.leftAnchor, constant: -20).isActive = true
+     //   itemCollectionView.heightAnchor.constraint(equalToConstant: 185).isActive = true
         
-        menuCollectionView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant:80).isActive = true
         menuCollectionView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         menuCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
         menuCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true

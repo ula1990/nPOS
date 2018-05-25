@@ -13,9 +13,9 @@ class GiftCard: NSObject {
     var id: String?
     var name: String?
     var imageName: String?
-    var percentage: Double?
+    var percentage: Int?
     
-    init(id: String, name: String,imageName: String, percentage: Double){
+    init(id: String, name: String,imageName: String, percentage: Int){
         self.id = id
         self.name = name
         self.imageName = imageName

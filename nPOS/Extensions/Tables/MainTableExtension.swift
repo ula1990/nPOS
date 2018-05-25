@@ -23,7 +23,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-             return 60
+             return 50
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             return cartTableView.deselectRow(at: indexPath, animated: true)

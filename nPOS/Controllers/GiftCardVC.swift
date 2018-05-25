@@ -69,7 +69,7 @@ class GiftCardVC: UIViewController {
         
         giftCardCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         giftCardCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        giftCardCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        giftCardCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         giftCardCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         giftCardCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         giftCardCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
@@ -78,7 +78,7 @@ class GiftCardVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.9)
+        view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(1)
         cards = temporaryGiftCardArray()
         checkData()
         view.addSubview(giftCardLogo)
@@ -91,7 +91,7 @@ class GiftCardVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.9)
+        view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(1)
         configureNavBar()
         checkData()
         

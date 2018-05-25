@@ -20,6 +20,7 @@ class GiftCardCell: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
+        image.layer.cornerRadius = 5
         return image
     }()
     
@@ -36,9 +37,12 @@ class GiftCardCell: UICollectionViewCell {
     let persentageDiscount: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .right
+        label.textAlignment = .center
         label.textColor = UIColor.white.withAlphaComponent(1)
         label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.backgroundColor = UIColor(named: "4")
+        label.layer.cornerRadius = 5
+        label.clipsToBounds = true
         return label
     }()
 
@@ -53,15 +57,15 @@ class GiftCardCell: UICollectionViewCell {
         cardImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         cardName.topAnchor.constraint(equalTo: cardImage.bottomAnchor,constant: -1).isActive = true
-        cardName.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 60).isActive = true
+        cardName.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 10).isActive = true
         cardName.heightAnchor.constraint(equalToConstant: 40).isActive = true
         cardName.widthAnchor.constraint(equalToConstant: 140).isActive = true
         
         persentageDiscount.topAnchor.constraint(equalTo: cardImage.bottomAnchor,constant: -1).isActive = true
-        persentageDiscount.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -60).isActive = true
+        persentageDiscount.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -10).isActive = true
         persentageDiscount.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        persentageDiscount.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        
+        persentageDiscount.widthAnchor.constraint(equalToConstant: 50).isActive = true
+
     }
     
     func updateCellData(card: GiftCard){
