@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B1229681BB359A99686D05A /* Pods_nPOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0025178C52A0169280EEF968 /* Pods_nPOS.framework */; };
+		C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03242B820BB4CD200F579F8 /* NotificationExtension.swift */; };
 		C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */; };
 		C076DE6920B48FAB006EC3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C076DE6720B48FAB006EC3C2 /* Main.storyboard */; };
 		C076DE6C20B48FAB006EC3C2 /* nPOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6A20B48FAB006EC3C2 /* nPOS.xcdatamodeld */; };
@@ -71,6 +72,7 @@
 		0025178C52A0169280EEF968 /* Pods_nPOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nPOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F599B90D27B34CA128822CD /* Pods-nPOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nPOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nPOS/Pods-nPOS.debug.xcconfig"; sourceTree = "<group>"; };
 		83F055317DF6BC2E13EB12A0 /* Pods-nPOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nPOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nPOS/Pods-nPOS.release.xcconfig"; sourceTree = "<group>"; };
+		C03242B820BB4CD200F579F8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		C076DE6020B48FAB006EC3C2 /* nPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C076DE6820B48FAB006EC3C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				C076DE9C20B491CE006EC3C2 /* Alert.swift */,
+				C03242B820BB4CD200F579F8 /* NotificationExtension.swift */,
 				C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */,
 				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
 				C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */,
@@ -496,6 +499,7 @@
 				C0ED81E020B82F90002C5E6D /* Color.swift in Sources */,
 				C076DE9B20B491A8006EC3C2 /* LoginControllerHandlers.swift in Sources */,
 				C0827A7420B8066500BA32C5 /* TableCollectionExtension.swift in Sources */,
+				C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */,
 				C076DE9620B4905A006EC3C2 /* User.swift in Sources */,
 				C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */,
 				C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */,

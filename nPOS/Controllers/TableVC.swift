@@ -9,10 +9,6 @@
 import UIKit
 
 
-protocol transferSelectedColorDelegate: class{
-    func colorReceived(selectedColor: UIColor? )
-}
-
 class TableVC: UIViewController {
 
     let tableCellId = "tableCellId"
@@ -161,8 +157,15 @@ class TableVC: UIViewController {
         setupView()
         configureNavBar()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleColorSelection), name: .saveColor, object: nil)
+
     }
     
+    @objc func handleColorSelection(notification: Notification){
+        let colorVC = notification.object as! SelectColorVC
+        selectColorButton.backgroundColor = colorVC.selectedColor
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(1)
         configureNavBar()

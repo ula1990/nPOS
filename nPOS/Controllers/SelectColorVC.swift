@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol transferSelectedColorDelegate: class{
+    func colorReceived(selectedColor: UIColor? )
+}
+
 class SelectColorVC: UIViewController {
     
     var colorList: [Color] = []
-    var selectedColor: String!
+    var selectedColor: UIColor?
     var selectionDelegate: transferSelectedColorDelegate?
 
     lazy var selectColorView: UIView = {
@@ -99,7 +103,6 @@ class SelectColorVC: UIViewController {
         configureNavBar()
         setupView()
         colorList = temporaryColorArray()
-        
     }
     
     

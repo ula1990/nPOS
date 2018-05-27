@@ -28,10 +28,11 @@ class LoginController: UIViewController {
         button.backgroundColor =  UIColor(white: 1, alpha: 1)
         button.setTitle("Register", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor(named: "background"), for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18 )
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.addTarget(self, action: #selector(handleLoginregister), for: .touchUpInside)
         button.layer.cornerRadius = 5
+        button.backgroundColor = UIColor(named: "9")
         return button
         
     }()
@@ -127,23 +128,13 @@ class LoginController: UIViewController {
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
-        sc.tintColor = UIColor.white
+        sc.tintColor = UIColor(named: "9")
+        sc.backgroundColor = UIColor.white
         sc.selectedSegmentIndex = 1
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
+        sc.layer.cornerRadius = 5
         return sc
     }()
-    
-    
-    lazy var labelSlogan: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Powered by:"
-        label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textAlignment = .center
-        return label
-    }()
-    
     
     lazy var applePayLogoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -206,7 +197,6 @@ class LoginController: UIViewController {
         view.addSubview(logoLeeroy)
         view.addSubview(profileImageView)
         view.addSubview(loginRegisterSegmentedControl)
-        view.addSubview(labelSlogan)
         view.addSubview(applePayLogoImageView)
         view.addSubview(androidPayLogoImageView)
         view.addSubview(mastercardLogoImageView)
@@ -215,7 +205,6 @@ class LoginController: UIViewController {
         setupLoginRegisterButton()
         setupProfileImageView()
         setupLoginRegisterSegmentedControl()
-        setupSloganLabel()
         setupLogoImages()
     }
     
@@ -244,7 +233,7 @@ class LoginController: UIViewController {
         
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        inputsContainerView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         inputsContainerViewHightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 135)
         inputsContainerViewHightAnchor?.isActive = true
         
@@ -292,38 +281,30 @@ class LoginController: UIViewController {
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
-    func setupSloganLabel(){
-        labelSlogan.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90).isActive = true
-        labelSlogan.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        labelSlogan.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        labelSlogan.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-    }
-    
     
     func setupLogoImages(){
         
         logoLeeroy.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         logoLeeroy.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        logoLeeroy.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        logoLeeroy.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        logoLeeroy.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        logoLeeroy.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
         applePayLogoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        applePayLogoImageView.topAnchor.constraint(equalTo: labelSlogan.bottomAnchor, constant: 10).isActive = true
-        applePayLogoImageView.widthAnchor.constraint(equalToConstant: 170).isActive = true
-        applePayLogoImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        applePayLogoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        applePayLogoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        applePayLogoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         androidPayLogoImageView.centerYAnchor.constraint(equalTo: applePayLogoImageView.centerYAnchor).isActive = true
-        androidPayLogoImageView.leftAnchor.constraint(equalTo: applePayLogoImageView.rightAnchor, constant: 1).isActive = true
-        androidPayLogoImageView.topAnchor.constraint(equalTo: labelSlogan.bottomAnchor, constant: 10).isActive = true
+        androidPayLogoImageView.leftAnchor.constraint(equalTo: applePayLogoImageView.rightAnchor, constant: 10).isActive = true
+        androidPayLogoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
         androidPayLogoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         androidPayLogoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         mastercardLogoImageView.centerYAnchor.constraint(equalTo: applePayLogoImageView.centerYAnchor).isActive = true
-        mastercardLogoImageView.rightAnchor.constraint(equalTo: applePayLogoImageView.leftAnchor, constant: -1).isActive = true
-        mastercardLogoImageView.topAnchor.constraint(equalTo: labelSlogan.bottomAnchor, constant: 10).isActive = true
-        mastercardLogoImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        mastercardLogoImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        mastercardLogoImageView.rightAnchor.constraint(equalTo: applePayLogoImageView.leftAnchor, constant: -10).isActive = true
+        mastercardLogoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        mastercardLogoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        mastercardLogoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -25,6 +25,9 @@ extension SelectColorVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedColor = colorList[row].categoryColor
+        NotificationCenter.default.post(name: .saveColor, object: self)
+        
         selectionDelegate?.colorReceived(selectedColor: colorList[row].categoryColor)
     }
     
