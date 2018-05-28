@@ -16,6 +16,7 @@ class MainVC: UIViewController {
     let categoryCellId = "categoryCellId"
     let cartCellId = "cartCellId"
     let itemCellId = "ItemCellId"
+    var observer: NSObjectProtocol?
     
     var menuBar: [Menu] = []
     var items: [Item] = []
@@ -304,7 +305,16 @@ class MainVC: UIViewController {
         setupView()
         connectCollectionsTables()
         UIApplication.shared.statusBarStyle = .lightContent
-        
+        observer = NotificationCenter.default.addObserver(forName: .selectedTable, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let tableVc = notification.object as! TableVC
+            self.tableLabel.text = tableVc.selectedTable
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let observer = observer{
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     fileprivate func setupView(){
@@ -418,8 +428,9 @@ class MainVC: UIViewController {
     }
     
     @objc func handlePay(){
-        
-        
+        let payVC = UINavigationController(rootViewController: PayVC())
+        payVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        present(payVC, animated: true, completion: nil)
     }
     
     @objc func handleClear(){

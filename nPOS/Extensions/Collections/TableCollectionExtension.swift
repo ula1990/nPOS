@@ -24,6 +24,9 @@ extension TableVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let table = tables[indexPath.row]
+        selectedTable = table.name! + " " + String(table.id!)
+        NotificationCenter.default.post(name: .selectedTable, object: self)
         dismiss(animated: true, completion: nil)
     }
     

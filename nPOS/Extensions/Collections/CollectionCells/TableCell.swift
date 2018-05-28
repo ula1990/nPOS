@@ -40,7 +40,8 @@ class TableCell: UICollectionViewCell {
         label.textAlignment = .left
         label.textColor = UIColor.white.withAlphaComponent(0.9)
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.text = "Table"
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
         return label
     }()
     
@@ -75,8 +76,9 @@ class TableCell: UICollectionViewCell {
         
         tableName.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         tableName.leftAnchor.constraint(equalTo: tableIconImage.rightAnchor,constant: 10).isActive = true
+        tableName.rightAnchor.constraint(equalTo: tableNumber.leftAnchor,constant: -5).isActive = true
         tableName.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        tableName.widthAnchor.constraint(equalToConstant: 80).isActive = true
+
         
         tableNumber.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         tableNumber.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -10).isActive = true

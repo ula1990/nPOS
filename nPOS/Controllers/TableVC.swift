@@ -14,6 +14,7 @@ class TableVC: UIViewController {
     let tableCellId = "tableCellId"
     var tables: [Table] = []
     var observer: NSObjectProtocol?
+    var selectedTable: String?
     
     lazy var addTableView: UIView = {
         let view = UIView()
@@ -29,7 +30,7 @@ class TableVC: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.textColor = UIColor.white.withAlphaComponent(0.9)
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.text = "Add New Table"
         return label
@@ -70,8 +71,8 @@ class TableVC: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19 )
         button.addTarget(self, action: #selector(handleSelectColor), for: .touchUpInside)
         button.layer.cornerRadius = 2
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.gray.cgColor
+//        button.layer.borderWidth = 2
+//        button.layer.borderColor = UIColor.white.cgColor.copy(alpha: 0.8)
         return button
         
     }()
@@ -83,6 +84,8 @@ class TableVC: UIViewController {
         button.addTarget(self, action: #selector(handleAddTable), for: .touchUpInside)
         button.setBackgroundImage(UIImage(named: "add"), for: .normal)
         button.tintColor = UIColor.white
+        button.backgroundColor = UIColor(named: "9")
+        button.layer.cornerRadius = 2
         return button
         
     }()
@@ -115,11 +118,34 @@ class TableVC: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = UIColor.white.withAlphaComponent(0.9)
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.text = "Table Info"
         return label
     }()
+    
+    lazy var tableNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = "Name:"
+        return label
+    }()
+    
+    lazy var tableIdLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = "Current ID:"
+        return label
+    }()
+    
+    
+    
     
     fileprivate func configureNavBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -134,7 +160,6 @@ class TableVC: UIViewController {
     
     fileprivate func setupView(){
         
-        addTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         addTableView.heightAnchor.constraint(equalToConstant: 175).isActive = true
         addTableView.rightAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: -20).isActive = true
@@ -146,10 +171,18 @@ class TableVC: UIViewController {
         tableInfoView.widthAnchor.constraint(equalToConstant: view.frame.size.width / 3.5).isActive = true
         
         tableInfoLabel.centerXAnchor.constraint(equalTo: tableInfoView.centerXAnchor).isActive = true
-        tableInfoLabel.topAnchor.constraint(equalTo: tableInfoView.topAnchor).isActive = true
-        tableInfoLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        tableInfoLabel.widthAnchor.constraint(equalTo: tableInfoView.widthAnchor).isActive = true
+        tableInfoLabel.topAnchor.constraint(equalTo: tableInfoView.topAnchor, constant: 20).isActive = true
+        tableInfoLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        tableInfoLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
+        tableNameLabel.topAnchor.constraint(equalTo: tableInfoLabel.bottomAnchor, constant: 20).isActive = true
+        tableNameLabel.leftAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: 10).isActive = true
+        tableNameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        tableIdLabel.topAnchor.constraint(equalTo: tableNameLabel.bottomAnchor, constant: 20).isActive = true
+        tableIdLabel.leftAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: 10).isActive = true
+        tableIdLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    
         tableCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tableCollectionView.topAnchor.constraint(equalTo: addTableView.bottomAnchor, constant: 20).isActive = true
         tableCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
@@ -172,17 +205,17 @@ class TableVC: UIViewController {
         tableNameTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
         selectTableCategoryLabel.leftAnchor.constraint(equalTo: tableNameTextField.rightAnchor, constant: 50).isActive = true
-        selectTableCategoryLabel.centerYAnchor.constraint(equalTo: addTableView.centerYAnchor).isActive = true
+        selectTableCategoryLabel.centerYAnchor.constraint(equalTo: idTextField.centerYAnchor).isActive = true
         selectTableCategoryLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         selectTableCategoryLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
         
-        selectColorButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 5).isActive = true
-        selectColorButton.centerYAnchor.constraint(equalTo: selectTableCategoryLabel.centerYAnchor).isActive = true
-        selectColorButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        selectColorButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        selectColorButton.topAnchor.constraint(equalTo: selectTableCategoryLabel.bottomAnchor, constant: 10).isActive = true
+        selectColorButton.centerXAnchor.constraint(equalTo: selectTableCategoryLabel.centerXAnchor).isActive = true
+        selectColorButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        selectColorButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
-        addTableButton.centerYAnchor.constraint(equalTo: selectColorButton.centerYAnchor).isActive = true
-        addTableButton.leftAnchor.constraint(equalTo: selectColorButton.rightAnchor, constant: 50).isActive = true
+        addTableButton.centerYAnchor.constraint(equalTo: selectTableCategoryLabel.centerYAnchor).isActive = true
+        addTableButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 50).isActive = true
         addTableButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         addTableButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
 
@@ -195,6 +228,9 @@ class TableVC: UIViewController {
         view.addSubview(tableCollectionView)
         view.addSubview(addTableView)
         view.addSubview(tableInfoView)
+        tableInfoView.addSubview(tableInfoLabel)
+        tableInfoView.addSubview(tableNameLabel)
+        tableInfoView.addSubview(tableIdLabel)
         addTableView.addSubview(addTableLabel)
         addTableView.addSubview(idTextField)
         addTableView.addSubview(tableNameTextField)

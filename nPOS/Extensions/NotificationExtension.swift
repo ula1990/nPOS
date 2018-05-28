@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let saveColor = Notification.Name(rawValue: "saveColor")
+    static let selectedTable = Notification.Name(rawValue: "selectedTable")
 }
