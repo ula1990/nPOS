@@ -10,6 +10,8 @@ import UIKit
 
 class PayVC: UIViewController {
     
+    var totalAmountObserver: NSObjectProtocol?
+    
     lazy var payView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -134,8 +136,8 @@ class PayVC: UIViewController {
         
         cardButton.centerYAnchor.constraint(equalTo: cardPaymentView.centerYAnchor).isActive = true
         cardButton.centerXAnchor.constraint(equalTo: cardPaymentView.centerXAnchor).isActive = true
-        cardButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        cardButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        cardButton.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        cardButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
         cashPaymentView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         cashPaymentView.rightAnchor.constraint(equalTo: payView.rightAnchor, constant: -20).isActive = true
@@ -150,8 +152,8 @@ class PayVC: UIViewController {
         
         cashButton.centerYAnchor.constraint(equalTo: cashPaymentView.centerYAnchor).isActive = true
         cashButton.centerXAnchor.constraint(equalTo: cashPaymentView.centerXAnchor).isActive = true
-        cashButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        cashButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        cashButton.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        cashButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
         totalPayment.bottomAnchor.constraint(equalTo: payView.bottomAnchor,constant: -10).isActive = true
         totalPayment.centerXAnchor.constraint(equalTo: payView.centerXAnchor).isActive = true
@@ -175,12 +177,23 @@ class PayVC: UIViewController {
         payView.addSubview(totalPayment)
         payView.addSubview(titleLabel)
         setupView()
+        totalAmountObserver = NotificationCenter.default.addObserver(forName: .totalAmount, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let mainVC = notification.object as! MainVC
+            self.totalPayment.setTitle("Total amount to pay: $" + String(mainVC.totalAmountInfo!) , for: .normal)
+    
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.3)
         configureNavBar()
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let totalAmountObserver = totalAmountObserver{
+            NotificationCenter.default.removeObserver(totalAmountObserver)
+        }
     }
     
     @objc fileprivate func handleDismiss() {

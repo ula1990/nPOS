@@ -11,4 +11,7 @@ import Foundation
 extension Notification.Name {
     static let saveColor = Notification.Name(rawValue: "saveColor")
     static let selectedTable = Notification.Name(rawValue: "selectedTable")
+    static let selectedGiftCard = Notification.Name(rawValue: "selectedGiftCard")
+    static let totalAmount = Notification.Name(rawValue: "totalAmount")
 }
+

@@ -36,6 +36,13 @@ class TableVC: UIViewController {
         return label
     }()
     
+    lazy var tableIcon: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "new_table")
+        return image
+    }()
+    
     lazy var idTextField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -194,6 +201,11 @@ class TableVC: UIViewController {
         addTableLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         addTableLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
+        tableIcon.centerYAnchor.constraint(equalTo: addTableLabel.centerYAnchor).isActive = true
+        tableIcon.leftAnchor.constraint(equalTo: addTableLabel.rightAnchor, constant: 20).isActive = true
+        tableIcon.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        tableIcon.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
         idTextField.leftAnchor.constraint(equalTo: addTableView.leftAnchor, constant: 20).isActive = true
         idTextField.topAnchor.constraint(equalTo: addTableLabel.bottomAnchor, constant: 20).isActive = true
         idTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -232,6 +244,7 @@ class TableVC: UIViewController {
         tableInfoView.addSubview(tableNameLabel)
         tableInfoView.addSubview(tableIdLabel)
         addTableView.addSubview(addTableLabel)
+        addTableView.addSubview(tableIcon)
         addTableView.addSubview(idTextField)
         addTableView.addSubview(tableNameTextField)
         addTableView.addSubview(selectTableCategoryLabel)
@@ -269,6 +282,10 @@ class TableVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(1)
+        observer = NotificationCenter.default.addObserver(forName: .saveColor, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let colorVC = notification.object as! SelectColorVC
+            self.selectColorButton.backgroundColor = colorVC.selectedColor
+        })
         configureNavBar()
     }
     

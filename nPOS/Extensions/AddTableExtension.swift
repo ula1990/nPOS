@@ -18,6 +18,8 @@ extension TableVC {
             Alert.showBasic(title: "Check Table Name", msg: "Each table should have Name", vc: self)
         }else{
             addToTableList(id: Int(idTextField.text!)!, name: tableNameTextField.text!, color: selectColorButton.backgroundColor!)
+            idTextField.text = ""
+            tableNameTextField.text = ""
         }
         
     }

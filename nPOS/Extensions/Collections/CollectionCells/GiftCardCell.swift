@@ -36,7 +36,7 @@ class GiftCardCell: UICollectionViewCell {
         return label
     }()
     
-    let persentageDiscount: UILabel = {
+    let cardAmountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -51,30 +51,29 @@ class GiftCardCell: UICollectionViewCell {
     func  setupView(){
         addSubview(cardImage)
         addSubview(cardName)
-        addSubview(persentageDiscount)
+        addSubview(cardAmountLabel)
         
         cardImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        cardImage.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 10).isActive = true
+        cardImage.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 5).isActive = true
         cardImage.widthAnchor.constraint(equalToConstant: 40).isActive = true
         cardImage.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         cardName.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         cardName.leftAnchor.constraint(equalTo: cardImage.rightAnchor,constant: 5).isActive = true
         cardName.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        cardName.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        cardName.rightAnchor.constraint(equalTo: persentageDiscount.leftAnchor,constant: -5).isActive = true
+        cardName.rightAnchor.constraint(equalTo: cardAmountLabel.leftAnchor,constant: -5).isActive = true
         
-        persentageDiscount.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        persentageDiscount.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -10).isActive = true
-        persentageDiscount.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        persentageDiscount.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        cardAmountLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        cardAmountLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -5).isActive = true
+        cardAmountLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        cardAmountLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
 
     }
     
-    func updateCellData(card: GiftCard){
-        cardName.text = card.name
-        persentageDiscount.text = String(card.percentage!)
-        cardImage.image = UIImage(named: card.imageName!)
+    func updateCellData(item: Item){
+        cardName.text = item.name
+        cardAmountLabel.text = String(Int(item.price!))
+        cardImage.image = UIImage(named: item.imageName!)
     }
     
     required init?(coder aDecoder: NSCoder) {

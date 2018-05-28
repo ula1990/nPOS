@@ -16,15 +16,18 @@ extension GiftCardVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let card = cards[indexPath.row]
+            let item = cards[indexPath.row]
             let cell = giftCardCollectionView.dequeueReusableCell(withReuseIdentifier: giftCardCellId, for: indexPath) as! GiftCardCell
-            cell.updateCellData(card: card)
-            cell.layer.cornerRadius = 5
+            cell.updateCellData(item: item)
+            cell.layer.cornerRadius = 2
             cell.backgroundColor = UIColor(named: "background")
             return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let item = cards[indexPath.row]
+            selectedCard = item
+            NotificationCenter.default.post(name: .selectedGiftCard, object: self)
             dismiss(animated: true, completion: nil)
     }
     

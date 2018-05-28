@@ -16,7 +16,9 @@ class MainVC: UIViewController {
     let categoryCellId = "categoryCellId"
     let cartCellId = "cartCellId"
     let itemCellId = "ItemCellId"
-    var observer: NSObjectProtocol?
+    var tableObserver: NSObjectProtocol?
+    var giftCardObserver: NSObjectProtocol?
+    var totalAmountInfo: Double?
     
     var menuBar: [Menu] = []
     var items: [Item] = []
@@ -305,16 +307,26 @@ class MainVC: UIViewController {
         setupView()
         connectCollectionsTables()
         UIApplication.shared.statusBarStyle = .lightContent
-        observer = NotificationCenter.default.addObserver(forName: .selectedTable, object: nil, queue: OperationQueue.main, using: { (notification) in
+        tableObserver = NotificationCenter.default.addObserver(forName: .selectedTable, object: nil, queue: OperationQueue.main, using: { (notification) in
             let tableVc = notification.object as! TableVC
             self.tableLabel.text = tableVc.selectedTable
+        })
+        giftCardObserver = NotificationCenter.default.addObserver(forName: .selectedGiftCard, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let giftCardVc = notification.object as! GiftCardVC
+            self.itemInCart.append(giftCardVc.selectedCard!)
+            self.cartTableView.reloadData()
+            self.calculateTotal()
         })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if let observer = observer{
-            NotificationCenter.default.removeObserver(observer)
+        if let tableObserver = tableObserver{
+            NotificationCenter.default.removeObserver(tableObserver)
         }
+        if let giftCardObserver = giftCardObserver{
+            NotificationCenter.default.removeObserver(giftCardObserver)
+        }
+        
     }
     
     fileprivate func setupView(){
@@ -428,6 +440,8 @@ class MainVC: UIViewController {
     }
     
     @objc func handlePay(){
+        totalAmountInfo = Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +)) + Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +))
+        NotificationCenter.default.post(name: .totalAmount, object: self)
         let payVC = UINavigationController(rootViewController: PayVC())
         payVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         present(payVC, animated: true, completion: nil)
