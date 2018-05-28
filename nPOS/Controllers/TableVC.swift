@@ -13,6 +13,7 @@ class TableVC: UIViewController {
 
     let tableCellId = "tableCellId"
     var tables: [Table] = []
+    var observer: NSObjectProtocol?
     
     lazy var addTableView: UIView = {
         let view = UIView()
@@ -56,7 +57,7 @@ class TableVC: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.textColor = UIColor.gray
+        label.textColor = UIColor.white.withAlphaComponent(0.9)
         label.font = UIFont.systemFont(ofSize: 17)
         label.text = "Select Table Category:"
         return label
@@ -75,6 +76,17 @@ class TableVC: UIViewController {
         
     }()
     
+    lazy var  addTableButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19 )
+        button.addTarget(self, action: #selector(handleAddTable), for: .touchUpInside)
+        button.setBackgroundImage(UIImage(named: "add"), for: .normal)
+        button.tintColor = UIColor.white
+        return button
+        
+    }()
+    
     lazy var tableCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
@@ -87,6 +99,26 @@ class TableVC: UIViewController {
         view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0)
         view.isScrollEnabled = true
         return view
+    }()
+    
+    lazy var tableInfoView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowRadius = 5
+        view.layer.shadowOpacity = 0.3
+        view.layer.cornerRadius = 5
+        view.backgroundColor = UIColor(named: "background")
+        return view
+    }()
+    
+    lazy var tableInfoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.textColor = UIColor.white.withAlphaComponent(0.9)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "Table Info"
+        return label
     }()
     
     fileprivate func configureNavBar() {
@@ -105,13 +137,23 @@ class TableVC: UIViewController {
         addTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         addTableView.heightAnchor.constraint(equalToConstant: 175).isActive = true
-        addTableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        addTableView.rightAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: -20).isActive = true
         addTableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        
+        tableInfoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        tableInfoView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        tableInfoView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        tableInfoView.widthAnchor.constraint(equalToConstant: view.frame.size.width / 3.5).isActive = true
+        
+        tableInfoLabel.centerXAnchor.constraint(equalTo: tableInfoView.centerXAnchor).isActive = true
+        tableInfoLabel.topAnchor.constraint(equalTo: tableInfoView.topAnchor).isActive = true
+        tableInfoLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        tableInfoLabel.widthAnchor.constraint(equalTo: tableInfoView.widthAnchor).isActive = true
         
         tableCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tableCollectionView.topAnchor.constraint(equalTo: addTableView.bottomAnchor, constant: 20).isActive = true
         tableCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        tableCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        tableCollectionView.rightAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: -20).isActive = true
         tableCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         
         addTableLabel.leftAnchor.constraint(equalTo: addTableView.leftAnchor, constant: 20).isActive = true
@@ -132,12 +174,17 @@ class TableVC: UIViewController {
         selectTableCategoryLabel.leftAnchor.constraint(equalTo: tableNameTextField.rightAnchor, constant: 50).isActive = true
         selectTableCategoryLabel.centerYAnchor.constraint(equalTo: addTableView.centerYAnchor).isActive = true
         selectTableCategoryLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        selectTableCategoryLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        selectTableCategoryLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
         
         selectColorButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 5).isActive = true
         selectColorButton.centerYAnchor.constraint(equalTo: selectTableCategoryLabel.centerYAnchor).isActive = true
         selectColorButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         selectColorButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        addTableButton.centerYAnchor.constraint(equalTo: selectColorButton.centerYAnchor).isActive = true
+        addTableButton.leftAnchor.constraint(equalTo: selectColorButton.rightAnchor, constant: 50).isActive = true
+        addTableButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        addTableButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
 
     }
     
@@ -147,25 +194,43 @@ class TableVC: UIViewController {
         tables = temporaryTableArray()
         view.addSubview(tableCollectionView)
         view.addSubview(addTableView)
+        view.addSubview(tableInfoView)
         addTableView.addSubview(addTableLabel)
         addTableView.addSubview(idTextField)
         addTableView.addSubview(tableNameTextField)
         addTableView.addSubview(selectTableCategoryLabel)
         addTableView.addSubview(selectColorButton)
+        addTableView.addSubview(addTableButton)
+        
         tableCollectionView.delegate = self
         tableCollectionView.dataSource = self
+        idTextField.delegate = self
         setupView()
         configureNavBar()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleColorSelection), name: .saveColor, object: nil)
-
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.finishedWithInput))
+        doneButton.tintColor = .black
+        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        idTextField.inputAccessoryView = toolBar
+        tableNameTextField.inputAccessoryView = toolBar
+        
+        
+        observer = NotificationCenter.default.addObserver(forName: .saveColor, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let colorVC = notification.object as! SelectColorVC
+            self.selectColorButton.backgroundColor = colorVC.selectedColor
+        })
     }
     
-    @objc func handleColorSelection(notification: Notification){
-        let colorVC = notification.object as! SelectColorVC
-        selectColorButton.backgroundColor = colorVC.selectedColor
+    override func viewDidDisappear(_ animated: Bool) {
+        if let observer = observer{
+        NotificationCenter.default.removeObserver(observer)
+        }
     }
-        
+
+    
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(1)
         configureNavBar()
@@ -181,6 +246,9 @@ class TableVC: UIViewController {
         present(colorVC, animated: true, completion: nil)
     }
     
+    @objc func finishedWithInput (){
+        view.endEditing(true)
+    }
     func temporaryTableArray()->[Table]{
         var array: [Table] = []
         let item1 = Table(id: 1,name: "Tabel",categoryColor: UIColor(named: "1")!)

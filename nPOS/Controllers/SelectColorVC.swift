@@ -8,15 +8,11 @@
 
 import UIKit
 
-protocol transferSelectedColorDelegate: class{
-    func colorReceived(selectedColor: UIColor? )
-}
 
 class SelectColorVC: UIViewController {
     
     var colorList: [Color] = []
     var selectedColor: UIColor?
-    var selectionDelegate: transferSelectedColorDelegate?
 
     lazy var selectColorView: UIView = {
         let view = UIView()

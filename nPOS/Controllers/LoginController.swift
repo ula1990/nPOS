@@ -66,6 +66,7 @@ class LoginController: UIViewController {
         let tf = UITextField()
         tf.placeholder = "Name"
         tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.font = UIFont.systemFont(ofSize: 17)
         return tf
         
     }()
@@ -82,6 +83,7 @@ class LoginController: UIViewController {
         let tf = UITextField()
         tf.placeholder = "Email"
         tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.font = UIFont.systemFont(ofSize: 17)
         return tf
         
     }()
@@ -99,6 +101,7 @@ class LoginController: UIViewController {
         tf.placeholder = "Password"
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isSecureTextEntry = true
+        tf.font = UIFont.systemFont(ofSize: 17)
         return tf
         
     }()

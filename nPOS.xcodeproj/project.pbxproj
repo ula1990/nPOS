@@ -45,10 +45,11 @@
 		C0827A7420B8066500BA32C5 /* TableCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A7320B8066500BA32C5 /* TableCollectionExtension.swift */; };
 		C0827A7620B8067E00BA32C5 /* Tabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0827A7520B8067D00BA32C5 /* Tabel.swift */; };
 		C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */; };
+		C0E2F06120BBEC8500DB88A8 /* AddTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2F06020BBEC8500DB88A8 /* AddTableExtension.swift */; };
+		C0E2F06320BBF12000DB88A8 /* IdTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2F06220BBF12000DB88A8 /* IdTextFieldExtension.swift */; };
 		C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81DB20B82AB3002C5E6D /* SelectColorVC.swift */; };
 		C0ED81DE20B82E6A002C5E6D /* SelectColorPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81DD20B82E6A002C5E6D /* SelectColorPickerExtension.swift */; };
 		C0ED81E020B82F90002C5E6D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81DF20B82F90002C5E6D /* Color.swift */; };
-		C0ED81E320B84258002C5E6D /* TransferTableInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,10 +116,11 @@
 		C0827A7320B8066500BA32C5 /* TableCollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCollectionExtension.swift; sourceTree = "<group>"; };
 		C0827A7520B8067D00BA32C5 /* Tabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabel.swift; sourceTree = "<group>"; };
 		C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		C0E2F06020BBEC8500DB88A8 /* AddTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableExtension.swift; sourceTree = "<group>"; };
+		C0E2F06220BBF12000DB88A8 /* IdTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdTextFieldExtension.swift; sourceTree = "<group>"; };
 		C0ED81DB20B82AB3002C5E6D /* SelectColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorVC.swift; sourceTree = "<group>"; };
 		C0ED81DD20B82E6A002C5E6D /* SelectColorPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorPickerExtension.swift; sourceTree = "<group>"; };
 		C0ED81DF20B82F90002C5E6D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTableInfoExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +261,8 @@
 				C03242B820BB4CD200F579F8 /* NotificationExtension.swift */,
 				C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */,
 				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
-				C0ED81E220B84258002C5E6D /* TransferTableInfoExtension.swift */,
+				C0E2F06020BBEC8500DB88A8 /* AddTableExtension.swift */,
+				C0E2F06220BBF12000DB88A8 /* IdTextFieldExtension.swift */,
 				C0ED81E120B83050002C5E6D /* Pickers */,
 				C0827A6920B6C87A00BA32C5 /* Tables */,
 				C0827A6A20B6C88C00BA32C5 /* Collections */,
@@ -496,11 +499,13 @@
 			files = (
 				C07D1C5B20B6A31F00FA3F0C /* GiftCardVC.swift in Sources */,
 				C076DEB220B4BBAC006EC3C2 /* ItemCell.swift in Sources */,
+				C0E2F06120BBEC8500DB88A8 /* AddTableExtension.swift in Sources */,
 				C0ED81E020B82F90002C5E6D /* Color.swift in Sources */,
 				C076DE9B20B491A8006EC3C2 /* LoginControllerHandlers.swift in Sources */,
 				C0827A7420B8066500BA32C5 /* TableCollectionExtension.swift in Sources */,
 				C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */,
 				C076DE9620B4905A006EC3C2 /* User.swift in Sources */,
+				C0E2F06320BBF12000DB88A8 /* IdTextFieldExtension.swift in Sources */,
 				C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */,
 				C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */,
 				C0827A6E20B6F1CB00BA32C5 /* GiftCardCollection.swift in Sources */,
@@ -520,7 +525,6 @@
 				C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */,
 				C0827A6C20B6F1B500BA32C5 /* GiftCardCell.swift in Sources */,
 				C076DE9920B49170006EC3C2 /* LoginController.swift in Sources */,
-				C0ED81E320B84258002C5E6D /* TransferTableInfoExtension.swift in Sources */,
 				C076DE9D20B491CE006EC3C2 /* Alert.swift in Sources */,
 				C07D1C5020B5B55600FA3F0C /* Category.swift in Sources */,
 				C076DEAC20B4A964006EC3C2 /* MainTableExtension.swift in Sources */,
