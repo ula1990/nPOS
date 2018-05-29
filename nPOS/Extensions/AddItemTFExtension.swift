@@ -46,10 +46,15 @@ extension NewItemVC: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        taxAmount = 0.3 * Double(itemPriceTF.text!)!
-        nettoAmount = 0.7 * Double(itemPriceTF.text!)!
-        itemPriceNettoResult.text = "$ " + String(nettoAmount!)
-        itemPriceTaxResult.text = "$ " + String(taxAmount!)
+        if itemPriceTF.text?.isEmpty == true{
+            print(Error.self)
+        }else{
+            taxAmount = 0.3 * Double(itemPriceTF.text!)!
+            nettoAmount = 0.7 * Double(itemPriceTF.text!)!
+            itemPriceNettoResult.text = "$ " + String(nettoAmount!)
+            itemPriceTaxResult.text = "$ " + String(taxAmount!)
+        }
+        
         
     }
 }
