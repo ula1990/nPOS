@@ -13,5 +13,6 @@ extension Notification.Name {
     static let selectedTable = Notification.Name(rawValue: "selectedTable")
     static let selectedGiftCard = Notification.Name(rawValue: "selectedGiftCard")
     static let totalAmount = Notification.Name(rawValue: "totalAmount")
+    static let addItem = Notification.Name(rawValue: "addItem")
 }
 

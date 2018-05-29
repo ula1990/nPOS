@@ -14,6 +14,8 @@ class NewItemVC: UIViewController {
     var categoryList: [Category] = []
     var categoriesShowing = false
     var categoriesWidthAnchor: NSLayoutConstraint?
+    var taxAmount: Double?
+    var nettoAmount: Double?
     
     lazy var newItemView: UIView = {
         let view = UIView()
@@ -157,6 +159,19 @@ class NewItemVC: UIViewController {
         label.numberOfLines = 1
         return label
     }()
+    
+    lazy var  addItemButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor =  UIColor(named: "chargeButton")
+        button.setTitle("Add Item", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19 )
+        button.addTarget(self, action: #selector(handleAddItem), for: .touchUpInside)
+        return button
+        
+    }()
+    
 
     fileprivate func configureNavBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -172,17 +187,16 @@ class NewItemVC: UIViewController {
         newItemView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         newItemView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         newItemView.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        newItemView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        newItemView.heightAnchor.constraint(equalToConstant: 450).isActive = true
         
         categoryCollectionView.leftAnchor.constraint(equalTo: newItemView.rightAnchor).isActive = true
         categoryCollectionView.centerYAnchor.constraint(equalTo: newItemView.centerYAnchor).isActive = true
-        categoryCollectionView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        categoryCollectionView.heightAnchor.constraint(equalToConstant: 450).isActive = true
         categoriesWidthAnchor = categoryCollectionView.widthAnchor.constraint(equalToConstant: 0)
         categoriesWidthAnchor?.isActive = true
         
-        
         categoryColorView.topAnchor.constraint(equalTo: newItemView.topAnchor, constant: 2).isActive = true
-        categoryColorView.bottomAnchor.constraint(equalTo: newItemView.bottomAnchor, constant: -2).isActive = true
+        categoryColorView.bottomAnchor.constraint(equalTo: addItemButton.topAnchor, constant: -2).isActive = true
         categoryColorView.leftAnchor.constraint(equalTo: newItemView.leftAnchor, constant: 2).isActive = true
         categoryColorView.widthAnchor.constraint(equalToConstant: 5).isActive = true
         
@@ -239,14 +253,18 @@ class NewItemVC: UIViewController {
         itemPriceTaxResult.rightAnchor.constraint(equalTo: newItemView.rightAnchor, constant: -20).isActive = true
         itemPriceTaxResult.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
+        addItemButton.bottomAnchor.constraint(equalTo: newItemView.bottomAnchor).isActive = true
+        addItemButton.centerXAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
+        addItemButton.leftAnchor.constraint(equalTo: newItemView.leftAnchor).isActive = true
+        addItemButton.rightAnchor.constraint(equalTo: newItemView.rightAnchor).isActive = true
+        addItemButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.1)
-        configureNavBar()
+    fileprivate func addElements() {
         view.addSubview(newItemView)
         view.addSubview(categoryCollectionView)
+        newItemView.addSubview(addItemButton)
         newItemView.addSubview(categoryColorView)
         newItemView.addSubview(titleLabel)
         newItemView.addSubview(itemNameTF)
@@ -258,10 +276,27 @@ class NewItemVC: UIViewController {
         newItemView.addSubview(itemPriceNettoResult)
         newItemView.addSubview(itemPriceTax)
         newItemView.addSubview(itemPriceTaxResult)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.1)
+        configureNavBar()
+        addElements()
         setupView()
         categoryList = temporaryCategoryArray()
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        itemPriceTF.delegate = self
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.finishedWithInput))
+        doneButton.tintColor = .black
+        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        itemPriceTF.inputAccessoryView = toolBar
+        itemNameTF.inputAccessoryView = toolBar
+        itemDescriptionTF.inputAccessoryView = toolBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -315,6 +350,23 @@ class NewItemVC: UIViewController {
             }
         }
         categoriesShowing = !categoriesShowing
+    }
+    
+    @objc public func handleAddItem(){
+        if itemNameTF.text?.isEmpty == true {
+            Alert.showBasic(title: "Name field is empty", msg: "Please check field with item name", vc: self)
+        }else if itemDescriptionTF.text?.isEmpty == true {
+            Alert.showBasic(title: "Description field is empty", msg: "Please check field with item description", vc: self)
+        }else if itemPriceTF.text?.isEmpty == true {
+            Alert.showBasic(title: "Price field is empty", msg: "Please check field with item price", vc: self)
+        }else{
+        NotificationCenter.default.post(name: .addItem, object: self)
+        dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc func finishedWithInput (){
+        view.endEditing(true)
     }
 
 

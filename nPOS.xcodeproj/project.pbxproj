@@ -15,6 +15,7 @@
 		C00FADBD20BD51F8006874FF /* NewItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADBC20BD51F8006874FF /* NewItemVC.swift */; };
 		C00FADBF20BD5A76006874FF /* ItemCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADBE20BD5A76006874FF /* ItemCategoryCell.swift */; };
 		C00FADC320BD5B09006874FF /* ItemCategoryCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */; };
+		C00FADC520BD7612006874FF /* AddItemTFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC420BD7612006874FF /* AddItemTFExtension.swift */; };
 		C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03242B820BB4CD200F579F8 /* NotificationExtension.swift */; };
 		C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */; };
 		C076DE6920B48FAB006EC3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C076DE6720B48FAB006EC3C2 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		C00FADBC20BD51F8006874FF /* NewItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemVC.swift; sourceTree = "<group>"; };
 		C00FADBE20BD5A76006874FF /* ItemCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryCell.swift; sourceTree = "<group>"; };
 		C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryCollection.swift; sourceTree = "<group>"; };
+		C00FADC420BD7612006874FF /* AddItemTFExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTFExtension.swift; sourceTree = "<group>"; };
 		C03242B820BB4CD200F579F8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		C076DE6020B48FAB006EC3C2 /* nPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				C0E2F06020BBEC8500DB88A8 /* AddTableExtension.swift */,
 				C00FADB620BC906A006874FF /* AddGiftCardExtension.swift */,
 				C0E2F06220BBF12000DB88A8 /* IdTextFieldExtension.swift */,
+				C00FADC420BD7612006874FF /* AddItemTFExtension.swift */,
 				C00FADB820BC92C4006874FF /* AmountGiftCardTFExtension.swift */,
 				C00FADBA20BCA10D006874FF /* TotalCalculationExtension.swift */,
 				C0ED81E120B83050002C5E6D /* Pickers */,
@@ -532,6 +535,7 @@
 				C07D1C5F20B6A38B00FA3F0C /* SupportVC.swift in Sources */,
 				C0ED81DE20B82E6A002C5E6D /* SelectColorPickerExtension.swift in Sources */,
 				C076DE6C20B48FAB006EC3C2 /* nPOS.xcdatamodeld in Sources */,
+				C00FADC520BD7612006874FF /* AddItemTFExtension.swift in Sources */,
 				C07D1C5420B6A14800FA3F0C /* MenuModel.swift in Sources */,
 				C0827A7220B8063700BA32C5 /* TableCell.swift in Sources */,
 				C07D1C6120B6A3BD00FA3F0C /* TableVC.swift in Sources */,

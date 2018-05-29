@@ -18,6 +18,7 @@ class MainVC: UIViewController {
     let itemCellId = "ItemCellId"
     var tableObserver: NSObjectProtocol?
     var giftCardObserver: NSObjectProtocol?
+    var addItemObserver: NSObjectProtocol?
     var totalAmountInfo: Double?
     
     var menuBar: [Menu] = []
@@ -317,6 +318,13 @@ class MainVC: UIViewController {
             self.itemInCart.append(giftCardVc.selectedCard!)
             self.cartTableView.reloadData()
             self.calculateTotal()
+        })
+        
+        addItemObserver = NotificationCenter.default.addObserver(forName: .addItem, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let addItemVC = notification.object as! NewItemVC
+    
+            self.cartTableView.reloadData()
+
         })
     }
     
