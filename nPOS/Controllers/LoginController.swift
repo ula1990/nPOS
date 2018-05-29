@@ -111,7 +111,7 @@ class LoginController: UIViewController {
         imageView.image = UIImage(named: "leeroyLogo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.tintColor = UIColor.white
+        imageView.tintColor = UIColor(named: "9")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -281,16 +281,16 @@ class LoginController: UIViewController {
         loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        loginRegisterButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        loginRegisterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     
     func setupLogoImages(){
         
-        logoLeeroy.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        logoLeeroy.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        logoLeeroy.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        logoLeeroy.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        logoLeeroy.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        logoLeeroy.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
+        logoLeeroy.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        logoLeeroy.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         applePayLogoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         applePayLogoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true

@@ -381,8 +381,11 @@ class NewItemVC: UIViewController {
             itemNameTF.text? = ""
             itemDescriptionTF.text? = ""
             itemPriceTF.text? = ""
-            itemPriceTaxResult.text = "$0"
-            itemPriceNettoResult.text = "$0"
+            itemPriceTaxResult.text = "$0-"
+            itemPriceNettoResult.text = "$0-"
+            categoryColorView.backgroundColor = UIColor(named:"background")
+            selectedCategoryButton.setTitle("Unknown", for: .normal)
+            view.endEditing(true)
         }
     }
     

@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Android_n.png",
+      "filename" : "LogoMakr_5Go2Ji.png",
       "scale" : "1x"
     },
     {
@@ -19,6 +19,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "original"
+    "template-rendering-intent" : "template"
   }
 }

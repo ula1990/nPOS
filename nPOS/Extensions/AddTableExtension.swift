@@ -20,6 +20,7 @@ extension TableVC {
             addToTableList(id: Int(idTextField.text!)!, name: tableNameTextField.text!, color: selectColorButton.backgroundColor!)
             idTextField.text = ""
             tableNameTextField.text = ""
+            view.endEditing(true)
         }
         
     }
