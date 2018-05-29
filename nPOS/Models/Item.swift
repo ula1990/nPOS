@@ -16,15 +16,16 @@ class Item: NSObject {
     var price: Double?
     var vat: Double?
     var desc: String?
+    var category: Int?
     
-    init(id: String, name: String,imageName: String, price: Double,vat: Double, desc: String){
+    init(id: String, name: String,imageName: String, price: Double,vat: Double, desc: String, category: Int){
         self.id = id
         self.name = name
         self.imageName = imageName
         self.price = price
         self.vat = vat
         self.desc = desc
-        
+        self.category = category
     }
     
 }

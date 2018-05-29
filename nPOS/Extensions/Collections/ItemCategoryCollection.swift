@@ -28,6 +28,7 @@ extension NewItemVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         let category = categoryList[indexPath.row]
         categoryColorView.backgroundColor = category.color
         selectedCategoryButton.setTitle(category.name, for: .normal)
+        categoryId = category.id
         UIView.animate(withDuration: 0.3) {
             self.categoriesWidthAnchor?.isActive = false
             self.categoriesWidthAnchor = self.categoryCollectionView.widthAnchor.constraint(equalToConstant: 0)

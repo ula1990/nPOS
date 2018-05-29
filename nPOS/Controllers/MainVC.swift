@@ -322,8 +322,8 @@ class MainVC: UIViewController {
         
         addItemObserver = NotificationCenter.default.addObserver(forName: .addItem, object: nil, queue: OperationQueue.main, using: { (notification) in
             let addItemVC = notification.object as! NewItemVC
-    
-            self.cartTableView.reloadData()
+            self.addCreatedItem(id: "1", name: addItemVC.itemNameTF.text!, imageName: "None", price: addItemVC.nettoAmount!, vat: addItemVC.taxAmount!, desc: addItemVC.itemDescriptionTF.text!, category: addItemVC.categoryId!)
+            self.itemCollectionView.reloadData()
 
         })
     }
@@ -334,6 +334,9 @@ class MainVC: UIViewController {
         }
         if let giftCardObserver = giftCardObserver{
             NotificationCenter.default.removeObserver(giftCardObserver)
+        }
+        if let addItemObserver = addItemObserver{
+            NotificationCenter.default.removeObserver(addItemObserver)
         }
         
     }
@@ -549,25 +552,25 @@ class MainVC: UIViewController {
     
     func temporaryArray()->[Item]{
         var array: [Item] = []
-        let item1 = Item(id: "1", name: "Big Mac Burger", imageName: "burger1", price: 8.99, vat: 0.55, desc: "Nice")
-        let item2 = Item(id: "2", name: "Chiken Burger", imageName: "burger2", price: 22.99, vat: 2.0, desc: "Nice")
-        let item3 = Item(id: "3", name: "CheesBurger", imageName: "burger3", price: 44.99, vat: 4.65, desc: "Nice")
-        let item4 = Item(id: "4", name: "El Maco Burger", imageName: "burger1", price: 2.99, vat: 0.20, desc: "Nice")
-        let item5 = Item(id: "5", name: "Leeroy Burger", imageName: "burger2", price: 0.99, vat: 0.12, desc: "Nice")
-        let item6 = Item(id: "6", name: "Ula Burger", imageName: "burger3", price: 35.99, vat: 3.40, desc: "Nice")
-        let item7 = Item(id: "7", name: "New Burger", imageName: "burger2", price: 5.99, vat: 0.51, desc: "Nice")
-        let item8 = Item(id: "8", name: "Old Burger", imageName: "burger1", price: 7.99, vat: 0.79, desc: "Nice")
-        let item9 = Item(id: "9", name: "Big Mac Burger", imageName: "burger2", price: 21.99, vat: 2.14, desc: "Nice")
-        let item10 = Item(id: "10", name: "Premium Burger", imageName: "burger3", price: 8.99, vat: 0.55, desc: "Nice")
-        let item11 = Item(id: "11", name: "Double Burger", imageName: "burger1", price: 3.99, vat: 0.32, desc: "Nice")
-        let item12 = Item(id: "12", name: "Mix Burger", imageName: "burger2", price: 9.99, vat: 0.99, desc: "Nice")
-        let item13 = Item(id: "13", name: "Julia Burger", imageName: "burger3", price: 3.99, vat: 0.44, desc: "Nice")
-        let item14 = Item(id: "14", name: "Big Mac Burger", imageName: "burger1", price: 9.99, vat: 0.99, desc: "Nice")
-        let item15 = Item(id: "15", name: "Big Mac Burger", imageName: "burger3", price: 6.99, vat: 0.65, desc: "Nice")
-        let item16 = Item(id: "16", name: "Big Mac Burger", imageName: "burger2", price: 2.99, vat: 0.23, desc: "Nice")
-        let item17 = Item(id: "17", name: "Big Mac Burger", imageName: "burger3", price: 8.99, vat: 0.87, desc: "Nice")
-        let item18 = Item(id: "18", name: "Boring Burger", imageName: "burger2", price: 8.99, vat: 0.87, desc: "Nice")
-        let item19 = Item(id: "19", name: "Awesome Burger", imageName: "burger1", price: 8.99, vat: 0.87, desc: "Nice")
+        let item1 = Item(id: "1", name: "Big Mac Burger", imageName: "burger1", price: 8.99, vat: 0.55, desc: "Nice", category: 1)
+        let item2 = Item(id: "2", name: "Chiken Burger", imageName: "burger2", price: 22.99, vat: 2.0, desc: "Nice", category: 2)
+        let item3 = Item(id: "3", name: "CheesBurger", imageName: "burger3", price: 44.99, vat: 4.65, desc: "Nice", category: 3)
+        let item4 = Item(id: "4", name: "El Maco Burger", imageName: "burger1", price: 2.99, vat: 0.20, desc: "Nice", category: 4)
+        let item5 = Item(id: "5", name: "Leeroy Burger", imageName: "burger2", price: 0.99, vat: 0.12, desc: "Nice", category: 1)
+        let item6 = Item(id: "6", name: "Ula Burger", imageName: "burger3", price: 35.99, vat: 3.40, desc: "Nice", category: 1)
+        let item7 = Item(id: "7", name: "New Burger", imageName: "burger2", price: 5.99, vat: 0.51, desc: "Nice", category: 6)
+        let item8 = Item(id: "8", name: "Old Burger", imageName: "burger1", price: 7.99, vat: 0.79, desc: "Nice", category: 1)
+        let item9 = Item(id: "9", name: "Big Mac Burger", imageName: "burger2", price: 21.99, vat: 2.14, desc: "Nice", category: 1)
+        let item10 = Item(id: "10", name: "Premium Burger", imageName: "burger3", price: 8.99, vat: 0.55, desc: "Nice", category: 1)
+        let item11 = Item(id: "11", name: "Double Burger", imageName: "burger1", price: 3.99, vat: 0.32, desc: "Nice", category: 1)
+        let item12 = Item(id: "12", name: "Mix Burger", imageName: "burger2", price: 9.99, vat: 0.99, desc: "Nice", category: 1)
+        let item13 = Item(id: "13", name: "Julia Burger", imageName: "burger3", price: 3.99, vat: 0.44, desc: "Nice", category: 1)
+        let item14 = Item(id: "14", name: "Big Mac Burger", imageName: "burger1", price: 9.99, vat: 0.99, desc: "Nice", category: 1)
+        let item15 = Item(id: "15", name: "Big Mac Burger", imageName: "burger3", price: 6.99, vat: 0.65, desc: "Nice", category: 1)
+        let item16 = Item(id: "16", name: "Big Mac Burger", imageName: "burger2", price: 2.99, vat: 0.23, desc: "Nice", category: 1)
+        let item17 = Item(id: "17", name: "Big Mac Burger", imageName: "burger3", price: 8.99, vat: 0.87, desc: "Nice", category: 1)
+        let item18 = Item(id: "18", name: "Boring Burger", imageName: "burger2", price: 8.99, vat: 0.87, desc: "Nice", category: 1)
+        let item19 = Item(id: "19", name: "Awesome Burger", imageName: "burger1", price: 8.99, vat: 0.87, desc: "Nice", category: 1)
         
         array.append(item1)
         array.append(item2)

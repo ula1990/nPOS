@@ -55,6 +55,7 @@ class ItemCell: UICollectionViewCell {
     
     func updateCellData(item: Item){
         itemName.text = item.name
+        colorView.backgroundColor = UIColor(named: String(item.category!))
     }
     
     required init?(coder aDecoder: NSCoder) {

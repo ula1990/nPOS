@@ -14,8 +14,9 @@ class NewItemVC: UIViewController {
     var categoryList: [Category] = []
     var categoriesShowing = false
     var categoriesWidthAnchor: NSLayoutConstraint?
-    var taxAmount: Double?
-    var nettoAmount: Double?
+    var taxAmount: Double? = 0
+    var nettoAmount: Double? = 0
+    var categoryId: Int? = 1
     
     lazy var newItemView: UIView = {
         let view = UIView()
@@ -44,6 +45,15 @@ class NewItemVC: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 1
         return label
+    }()
+    
+    lazy var titleLogo: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "newItem")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
 
     lazy var itemNameTF: UITextField = {
@@ -202,8 +212,13 @@ class NewItemVC: UIViewController {
         
         titleLabel.centerXAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: newItemView.topAnchor).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        titleLogo.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 5).isActive = true
+        titleLogo.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        titleLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        titleLogo.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         itemNameTF.centerXAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
         itemNameTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
@@ -264,6 +279,7 @@ class NewItemVC: UIViewController {
     fileprivate func addElements() {
         view.addSubview(newItemView)
         view.addSubview(categoryCollectionView)
+        newItemView.addSubview(titleLogo)
         newItemView.addSubview(addItemButton)
         newItemView.addSubview(categoryColorView)
         newItemView.addSubview(titleLabel)
@@ -280,7 +296,7 @@ class NewItemVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.1)
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.8)
         configureNavBar()
         addElements()
         setupView()
@@ -300,7 +316,7 @@ class NewItemVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.4)
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.8)
         configureNavBar()
         
     }
@@ -362,6 +378,11 @@ class NewItemVC: UIViewController {
         }else{
         NotificationCenter.default.post(name: .addItem, object: self)
         dismiss(animated: true, completion: nil)
+            itemNameTF.text? = ""
+            itemDescriptionTF.text? = ""
+            itemPriceTF.text? = ""
+            itemPriceTaxResult.text = "$0"
+            itemPriceNettoResult.text = "$0"
         }
     }
     

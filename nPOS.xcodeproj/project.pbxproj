@@ -16,6 +16,7 @@
 		C00FADBF20BD5A76006874FF /* ItemCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADBE20BD5A76006874FF /* ItemCategoryCell.swift */; };
 		C00FADC320BD5B09006874FF /* ItemCategoryCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */; };
 		C00FADC520BD7612006874FF /* AddItemTFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC420BD7612006874FF /* AddItemTFExtension.swift */; };
+		C00FADC720BD8BB6006874FF /* MainControllerHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC620BD8BB6006874FF /* MainControllerHandlers.swift */; };
 		C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03242B820BB4CD200F579F8 /* NotificationExtension.swift */; };
 		C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */; };
 		C076DE6920B48FAB006EC3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C076DE6720B48FAB006EC3C2 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		C00FADBE20BD5A76006874FF /* ItemCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryCell.swift; sourceTree = "<group>"; };
 		C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryCollection.swift; sourceTree = "<group>"; };
 		C00FADC420BD7612006874FF /* AddItemTFExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTFExtension.swift; sourceTree = "<group>"; };
+		C00FADC620BD8BB6006874FF /* MainControllerHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControllerHandlers.swift; sourceTree = "<group>"; };
 		C03242B820BB4CD200F579F8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		C076DE6020B48FAB006EC3C2 /* nPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				C03242B820BB4CD200F579F8 /* NotificationExtension.swift */,
 				C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */,
 				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
+				C00FADC620BD8BB6006874FF /* MainControllerHandlers.swift */,
 				C0E2F06020BBEC8500DB88A8 /* AddTableExtension.swift */,
 				C00FADB620BC906A006874FF /* AddGiftCardExtension.swift */,
 				C0E2F06220BBF12000DB88A8 /* IdTextFieldExtension.swift */,
@@ -543,6 +546,7 @@
 				C07D1C5820B6A2F600FA3F0C /* TransactionsVC.swift in Sources */,
 				C076DEB020B4B7B7006EC3C2 /* Item.swift in Sources */,
 				C076DEAE20B4B765006EC3C2 /* CartCell.swift in Sources */,
+				C00FADC720BD8BB6006874FF /* MainControllerHandlers.swift in Sources */,
 				C00FADC320BD5B09006874FF /* ItemCategoryCollection.swift in Sources */,
 				C07D1C6320B6A3D500FA3F0C /* DiscountVC.swift in Sources */,
 				C00FADB720BC906A006874FF /* AddGiftCardExtension.swift in Sources */,
