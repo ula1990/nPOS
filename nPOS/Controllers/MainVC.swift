@@ -90,11 +90,13 @@ class MainVC: UIViewController {
     lazy var tableLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Select Table"
+        label.text = "Table #"
         label.textColor = UIColor.white.withAlphaComponent(0.8)
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.textAlignment = .right
+        label.textAlignment = .left
         label.backgroundColor = UIColor(named: "background")
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.3
         return label
     }()
     
@@ -355,7 +357,7 @@ class MainVC: UIViewController {
         
         tableLabel.topAnchor.constraint(equalTo: cartView.topAnchor).isActive = true
         tableLabel.leftAnchor.constraint(equalTo: cartView.leftAnchor, constant: 10).isActive = true
-        tableLabel.widthAnchor.constraint(equalToConstant: cartView.frame.size.width/2)
+        tableLabel.rightAnchor.constraint(equalTo: cartLogo.leftAnchor, constant: -1).isActive = true
         tableLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         cartLogo.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true

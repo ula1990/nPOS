@@ -28,7 +28,7 @@
 		C076DE9620B4905A006EC3C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE9520B4905A006EC3C2 /* User.swift */; };
 		C076DE9920B49170006EC3C2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE9820B49170006EC3C2 /* LoginController.swift */; };
 		C076DE9B20B491A8006EC3C2 /* LoginControllerHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */; };
-		C076DE9D20B491CE006EC3C2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE9C20B491CE006EC3C2 /* Alert.swift */; };
+		C076DE9D20B491CE006EC3C2 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE9C20B491CE006EC3C2 /* AlertExtension.swift */; };
 		C076DEA420B49386006EC3C2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DEA320B49386006EC3C2 /* MainVC.swift */; };
 		C076DEA620B493EE006EC3C2 /* ImageCacheExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */; };
 		C076DEA820B49785006EC3C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C076DEA720B49785006EC3C2 /* GoogleService-Info.plist */; };
@@ -107,7 +107,7 @@
 		C076DE9520B4905A006EC3C2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C076DE9820B49170006EC3C2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerHandlers.swift; sourceTree = "<group>"; };
-		C076DE9C20B491CE006EC3C2 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		C076DE9C20B491CE006EC3C2 /* AlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		C076DEA320B49386006EC3C2 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheExtensions.swift; sourceTree = "<group>"; };
 		C076DEA720B49785006EC3C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 		C076DE9E20B491D5006EC3C2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C076DE9C20B491CE006EC3C2 /* Alert.swift */,
+				C076DE9C20B491CE006EC3C2 /* AlertExtension.swift */,
 				C03242B820BB4CD200F579F8 /* NotificationExtension.swift */,
 				C076DEA520B493EE006EC3C2 /* ImageCacheExtensions.swift */,
 				C076DE9A20B491A8006EC3C2 /* LoginControllerHandlers.swift */,
@@ -556,7 +556,7 @@
 				C00FADBF20BD5A76006874FF /* ItemCategoryCell.swift in Sources */,
 				C0827A6C20B6F1B500BA32C5 /* GiftCardCell.swift in Sources */,
 				C076DE9920B49170006EC3C2 /* LoginController.swift in Sources */,
-				C076DE9D20B491CE006EC3C2 /* Alert.swift in Sources */,
+				C076DE9D20B491CE006EC3C2 /* AlertExtension.swift in Sources */,
 				C07D1C5020B5B55600FA3F0C /* Category.swift in Sources */,
 				C076DEAC20B4A964006EC3C2 /* MainTableExtension.swift in Sources */,
 				C07D1C5D20B6A34500FA3F0C /* CashDrawerVC.swift in Sources */,
