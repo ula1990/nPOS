@@ -12,6 +12,8 @@ class NewItemVC: UIViewController {
     
     let categoryCellId = "categoryCellId"
     var categoryList: [Category] = []
+    var categoriesShowing = false
+    var categoriesWidthAnchor: NSLayoutConstraint?
     
     lazy var newItemView: UIView = {
         let view = UIView()
@@ -19,6 +21,13 @@ class NewItemVC: UIViewController {
         view.layer.shadowRadius = 5
         view.layer.shadowOpacity = 0.3
         view.layer.cornerRadius = 5
+        view.backgroundColor = UIColor(named: "background")
+        return view
+    }()
+    
+    lazy var categoryColorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "background")
         return view
     }()
@@ -73,17 +82,33 @@ class NewItemVC: UIViewController {
         return label
     }()
     
+    lazy var  selectedCategoryButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17 )
+        button.addTarget(self, action: #selector(handleSelectCategory), for: .touchUpInside)
+        button.setTitle("Unknown", for: .normal)
+        button.titleLabel?.textAlignment = .right
+        button.tintColor = UIColor.white.withAlphaComponent(0.8)
+        button.backgroundColor = UIColor(named: "background")
+        button.layer.cornerRadius = 2
+        button.contentHorizontalAlignment = .right
+        return button
+        
+    }()
+    
     lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 1, left:1, bottom: 1, right: 1)
-        layout.minimumInteritemSpacing = 1
-        layout.minimumLineSpacing = 1
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 2, left:2, bottom: 2, right: 2)
+        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 2
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(ItemCategoryCell.self, forCellWithReuseIdentifier: categoryCellId)
         view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0)
         view.isScrollEnabled = true
+        view.layer.cornerRadius = 2
         return view
     }()
     
@@ -149,6 +174,18 @@ class NewItemVC: UIViewController {
         newItemView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         newItemView.heightAnchor.constraint(equalToConstant: 500).isActive = true
         
+        categoryCollectionView.leftAnchor.constraint(equalTo: newItemView.rightAnchor).isActive = true
+        categoryCollectionView.centerYAnchor.constraint(equalTo: newItemView.centerYAnchor).isActive = true
+        categoryCollectionView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        categoriesWidthAnchor = categoryCollectionView.widthAnchor.constraint(equalToConstant: 0)
+        categoriesWidthAnchor?.isActive = true
+        
+        
+        categoryColorView.topAnchor.constraint(equalTo: newItemView.topAnchor, constant: 2).isActive = true
+        categoryColorView.bottomAnchor.constraint(equalTo: newItemView.bottomAnchor, constant: -2).isActive = true
+        categoryColorView.leftAnchor.constraint(equalTo: newItemView.leftAnchor, constant: 2).isActive = true
+        categoryColorView.widthAnchor.constraint(equalToConstant: 5).isActive = true
+        
         titleLabel.centerXAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: newItemView.topAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
@@ -177,10 +214,10 @@ class NewItemVC: UIViewController {
         selectItemCategory.rightAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
         selectItemCategory.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        categoryCollectionView.topAnchor.constraint(equalTo: itemPriceTF.bottomAnchor, constant: 20).isActive = true
-        categoryCollectionView.leftAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
-        categoryCollectionView.rightAnchor.constraint(equalTo:  newItemView.rightAnchor, constant: -20).isActive = true
-        categoryCollectionView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        selectedCategoryButton.topAnchor.constraint(equalTo: itemPriceTF.bottomAnchor, constant: 20).isActive = true
+        selectedCategoryButton.leftAnchor.constraint(equalTo: newItemView.centerXAnchor).isActive = true
+        selectedCategoryButton.rightAnchor.constraint(equalTo:  newItemView.rightAnchor, constant: -20).isActive = true
+        selectedCategoryButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         itemPriceNetto.topAnchor.constraint(equalTo: selectItemCategory.bottomAnchor, constant: 20).isActive = true
         itemPriceNetto.leftAnchor.constraint(equalTo: newItemView.leftAnchor, constant: 20).isActive = true
@@ -209,12 +246,14 @@ class NewItemVC: UIViewController {
         view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.1)
         configureNavBar()
         view.addSubview(newItemView)
+        view.addSubview(categoryCollectionView)
+        newItemView.addSubview(categoryColorView)
         newItemView.addSubview(titleLabel)
         newItemView.addSubview(itemNameTF)
         newItemView.addSubview(itemDescriptionTF)
         newItemView.addSubview(itemPriceTF)
         newItemView.addSubview(selectItemCategory)
-        newItemView.addSubview(categoryCollectionView)
+        newItemView.addSubview(selectedCategoryButton)
         newItemView.addSubview(itemPriceNetto)
         newItemView.addSubview(itemPriceNettoResult)
         newItemView.addSubview(itemPriceTax)
@@ -226,7 +265,7 @@ class NewItemVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.1)
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.4)
         configureNavBar()
         
     }
@@ -256,6 +295,26 @@ class NewItemVC: UIViewController {
         array.append(item8)
         
         return array
+    }
+    
+    @objc public func handleSelectCategory(){
+        if (categoriesShowing){
+            UIView.animate(withDuration: 0.3) {
+                self.categoriesWidthAnchor?.isActive = false
+                self.categoriesWidthAnchor = self.categoryCollectionView.widthAnchor.constraint(equalToConstant: 0)
+                self.categoriesWidthAnchor?.isActive = true
+                self.view.layoutIfNeeded()
+            }
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.categoriesWidthAnchor?.isActive = false
+                self.categoriesWidthAnchor = self.categoryCollectionView.widthAnchor.constraint(equalToConstant: 170)
+                self.categoriesWidthAnchor?.isActive = true
+                self.view.layoutIfNeeded()
+            }) { (true) in
+            }
+        }
+        categoriesShowing = !categoriesShowing
     }
 
 
