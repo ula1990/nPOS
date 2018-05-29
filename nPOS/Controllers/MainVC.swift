@@ -438,11 +438,9 @@ class MainVC: UIViewController {
         categoryCollectionView.rightAnchor.constraint(equalTo: cartView.leftAnchor,constant: -20).isActive = true
         
         itemCollectionView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant:5).isActive = true
-        
         itemCollectionView.bottomAnchor.constraint(equalTo: menuCollectionView.topAnchor, constant: -5).isActive = true
         itemCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
         itemCollectionView.rightAnchor.constraint(equalTo: cartView.leftAnchor, constant: -20).isActive = true
-     //   itemCollectionView.heightAnchor.constraint(equalToConstant: 185).isActive = true
         
         menuCollectionView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         menuCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
