@@ -26,6 +26,13 @@ class TableVC: UIViewController {
         return view
     }()
     
+    lazy var seperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "darkBackground")
+        return view
+    }()
+    
     lazy var addTableLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -111,15 +118,6 @@ class TableVC: UIViewController {
         return view
     }()
     
-    lazy var tableInfoView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowRadius = 5
-        view.layer.shadowOpacity = 0.3
-        view.layer.cornerRadius = 5
-        view.backgroundColor = UIColor(named: "background")
-        return view
-    }()
     
     lazy var tableInfoLabel: UILabel = {
         let label = UILabel()
@@ -127,33 +125,22 @@ class TableVC: UIViewController {
         label.textAlignment = .center
         label.textColor = UIColor.white.withAlphaComponent(0.8)
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.text = "Table Info"
+        label.text = "Information"
         return label
     }()
     
-    lazy var tableNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.textColor = UIColor.white.withAlphaComponent(0.8)
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.text = "Name:"
-        return label
+    lazy var tableTextInfo: UITextView = {
+        let text = UITextView()
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.textAlignment = .left
+        text.textColor = UIColor.white.withAlphaComponent(0.8)
+        text.font = UIFont.systemFont(ofSize: 17)
+        text.text = "To create a new table  you need to put first, id of the table in the text field from the left side of the screen,provide the name of the table,which staff can easily recognize and after that select category of the table which will show amount of the places on the table"
+        text.backgroundColor = UIColor(named: "background")
+        return text
     }()
     
-    lazy var tableIdLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.textColor = UIColor.white.withAlphaComponent(0.8)
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.text = "Current ID:"
-        return label
-    }()
-    
-    
-    
-    
+
     fileprivate func configureNavBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -169,32 +156,30 @@ class TableVC: UIViewController {
         
         addTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         addTableView.heightAnchor.constraint(equalToConstant: 175).isActive = true
-        addTableView.rightAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: -20).isActive = true
+        addTableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         addTableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        
-        tableInfoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
-        tableInfoView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
-        tableInfoView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        tableInfoView.widthAnchor.constraint(equalToConstant: view.frame.size.width / 3.5).isActive = true
-        
-        tableInfoLabel.centerXAnchor.constraint(equalTo: tableInfoView.centerXAnchor).isActive = true
-        tableInfoLabel.topAnchor.constraint(equalTo: tableInfoView.topAnchor, constant: 20).isActive = true
-        tableInfoLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        tableInfoLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        tableNameLabel.topAnchor.constraint(equalTo: tableInfoLabel.bottomAnchor, constant: 20).isActive = true
-        tableNameLabel.leftAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: 10).isActive = true
-        tableNameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        tableIdLabel.topAnchor.constraint(equalTo: tableNameLabel.bottomAnchor, constant: 20).isActive = true
-        tableIdLabel.leftAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: 10).isActive = true
-        tableIdLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     
         tableCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tableCollectionView.topAnchor.constraint(equalTo: addTableView.bottomAnchor, constant: 20).isActive = true
         tableCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        tableCollectionView.rightAnchor.constraint(equalTo: tableInfoView.leftAnchor, constant: -20).isActive = true
+        tableCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         tableCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        
+        seperatorView.centerXAnchor.constraint(equalTo: addTableView.centerXAnchor).isActive = true
+        seperatorView.centerYAnchor.constraint(equalTo: addTableView.centerYAnchor).isActive = true
+        seperatorView.topAnchor.constraint(equalTo: addTableView.topAnchor, constant: 10).isActive = true
+        seperatorView.bottomAnchor.constraint(equalTo: addTableView.bottomAnchor, constant: -10).isActive = true
+        seperatorView.widthAnchor.constraint(equalToConstant: 2).isActive = true
+        
+        tableInfoLabel.topAnchor.constraint(equalTo: addTableView.topAnchor, constant: 20).isActive = true
+        tableInfoLabel.rightAnchor.constraint(equalTo: addTableView.rightAnchor, constant: -20).isActive = true
+        tableInfoLabel.leftAnchor.constraint(equalTo: seperatorView.leftAnchor, constant: 20).isActive = true
+        tableInfoLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        tableTextInfo.topAnchor.constraint(equalTo: tableInfoLabel.bottomAnchor, constant: 5).isActive = true
+        tableTextInfo.rightAnchor.constraint(equalTo: addTableView.rightAnchor, constant: -20).isActive = true
+        tableTextInfo.leftAnchor.constraint(equalTo: seperatorView.leftAnchor, constant: 20).isActive = true
+        tableTextInfo.bottomAnchor.constraint(equalTo: addTableView.bottomAnchor, constant: -20).isActive = true
         
         addTableLabel.leftAnchor.constraint(equalTo: addTableView.leftAnchor, constant: 20).isActive = true
         addTableLabel.topAnchor.constraint(equalTo: addTableView.topAnchor, constant: 20).isActive = true
@@ -216,7 +201,7 @@ class TableVC: UIViewController {
         tableNameTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         tableNameTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
-        selectTableCategoryLabel.leftAnchor.constraint(equalTo: tableNameTextField.rightAnchor, constant: 50).isActive = true
+        selectTableCategoryLabel.leftAnchor.constraint(equalTo: tableNameTextField.rightAnchor, constant: 20).isActive = true
         selectTableCategoryLabel.centerYAnchor.constraint(equalTo: idTextField.centerYAnchor).isActive = true
         selectTableCategoryLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         selectTableCategoryLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
@@ -227,7 +212,7 @@ class TableVC: UIViewController {
         selectColorButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         addTableButton.centerYAnchor.constraint(equalTo: selectTableCategoryLabel.centerYAnchor).isActive = true
-        addTableButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 50).isActive = true
+        addTableButton.leftAnchor.constraint(equalTo: selectTableCategoryLabel.rightAnchor, constant: 10).isActive = true
         addTableButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         addTableButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
 
@@ -239,11 +224,10 @@ class TableVC: UIViewController {
         tables = temporaryTableArray()
         view.addSubview(tableCollectionView)
         view.addSubview(addTableView)
-        view.addSubview(tableInfoView)
-        tableInfoView.addSubview(tableInfoLabel)
-        tableInfoView.addSubview(tableNameLabel)
-        tableInfoView.addSubview(tableIdLabel)
         addTableView.addSubview(addTableLabel)
+        addTableView.addSubview(tableInfoLabel)
+        addTableView.addSubview(tableTextInfo)
+        addTableView.addSubview(seperatorView)
         addTableView.addSubview(tableIcon)
         addTableView.addSubview(idTextField)
         addTableView.addSubview(tableNameTextField)
@@ -304,22 +288,22 @@ class TableVC: UIViewController {
     }
     func temporaryTableArray()->[Table]{
         var array: [Table] = []
-        let item1 = Table(id: 1,name: "Tabel",categoryColor: UIColor(named: "1")!)
-        let item2 = Table(id: 2,name: "Tabel",categoryColor: (UIColor(named: "2"))!)
-        let item3 = Table(id: 3,name: "Tabel",categoryColor: UIColor(named: "3")!)
-        let item4 = Table(id: 4,name: "Tabel",categoryColor: UIColor(named: "4")!)
-        let item5 = Table(id: 5,name: "Tabel",categoryColor: UIColor(named: "5")!)
-        let item6 = Table(id: 6,name: "Tabel",categoryColor: UIColor(named: "6")!)
-        let item7 = Table(id: 7,name: "Tabel",categoryColor: UIColor(named: "7")!)
-        let item8 = Table(id: 8,name: "Tabel",categoryColor: UIColor(named: "1")!)
-        let item9 = Table(id: 9,name: "Tabel",categoryColor: UIColor(named: "1")!)
-        let item10 = Table(id: 10,name: "Tabel",categoryColor: UIColor(named: "4")!)
-        let item11 = Table(id: 11,name: "Tabel",categoryColor: UIColor(named: "4")!)
-        let item12 = Table(id: 12,name: "Tabel",categoryColor: UIColor(named: "8")!)
-        let item13 = Table(id: 13,name: "Tabel",categoryColor: UIColor(named: "5")!)
-        let item14 = Table(id: 14,name: "Tabel",categoryColor: UIColor(named: "5")!)
-        let item15 = Table(id: 15,name: "Tabel",categoryColor: UIColor(named: "1")!)
-        let item16 = Table(id: 16,name: "Tabel",categoryColor: UIColor(named: "1")!)
+        let item1 = Table(id: 1,name: "Table",categoryColor: UIColor(named: "1")!)
+        let item2 = Table(id: 2,name: "Table",categoryColor: (UIColor(named: "2"))!)
+        let item3 = Table(id: 3,name: "Table",categoryColor: UIColor(named: "3")!)
+        let item4 = Table(id: 4,name: "Table",categoryColor: UIColor(named: "4")!)
+        let item5 = Table(id: 5,name: "Table",categoryColor: UIColor(named: "5")!)
+        let item6 = Table(id: 6,name: "Table",categoryColor: UIColor(named: "6")!)
+        let item7 = Table(id: 7,name: "Table",categoryColor: UIColor(named: "7")!)
+        let item8 = Table(id: 8,name: "Table",categoryColor: UIColor(named: "1")!)
+        let item9 = Table(id: 9,name: "Table",categoryColor: UIColor(named: "1")!)
+        let item10 = Table(id: 10,name: "Table",categoryColor: UIColor(named: "4")!)
+        let item11 = Table(id: 11,name: "Table",categoryColor: UIColor(named: "4")!)
+        let item12 = Table(id: 12,name: "Table",categoryColor: UIColor(named: "8")!)
+        let item13 = Table(id: 13,name: "Table",categoryColor: UIColor(named: "5")!)
+        let item14 = Table(id: 14,name: "Table",categoryColor: UIColor(named: "5")!)
+        let item15 = Table(id: 15,name: "Table",categoryColor: UIColor(named: "1")!)
+        let item16 = Table(id: 16,name: "Table",categoryColor: UIColor(named: "1")!)
         let item17 = Table(id: 17,name: "Stuff",categoryColor: UIColor(named: "1")!)
     
         array.append(item1)

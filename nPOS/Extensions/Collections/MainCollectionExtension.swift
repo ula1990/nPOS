@@ -46,10 +46,15 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == itemCollectionView {
         let item = items[indexPath.row]
-        itemInCart.append(item)
-        self.cartTableView.reloadData()
-        counterOfItemsLabel.text = String(itemInCart.count)
-        self.calculateTotal()
+            if tableLabel.text == "Select Table"{
+                Alert.showBasic(title: "Select Table", msg: "To start order you need to select table.", vc: self)
+            }else{
+                itemInCart.append(item)
+                self.cartTableView.reloadData()
+                counterOfItemsLabel.text = String(itemInCart.count)
+                self.calculateTotal()
+            }
+        
         }else if collectionView == categoryCollectionView{
             print(Error.self)
         }else{

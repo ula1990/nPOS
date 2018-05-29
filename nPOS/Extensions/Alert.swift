@@ -14,7 +14,7 @@ class Alert {
     class func showBasic(title: String, msg: String, vc: UIViewController) {
         
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert )
-        alert.addAction(UIAlertAction(title: "ok", style: .default , handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default , handler: nil))
         vc.present(alert, animated: true)
     }
 }

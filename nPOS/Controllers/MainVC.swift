@@ -89,7 +89,7 @@ class MainVC: UIViewController {
     lazy var tableLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Table 5"
+        label.text = "Select Table"
         label.textColor = UIColor.white.withAlphaComponent(0.8)
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textAlignment = .right
@@ -310,6 +310,7 @@ class MainVC: UIViewController {
         tableObserver = NotificationCenter.default.addObserver(forName: .selectedTable, object: nil, queue: OperationQueue.main, using: { (notification) in
             let tableVc = notification.object as! TableVC
             self.tableLabel.text = tableVc.selectedTable
+            self.handleClear()
         })
         giftCardObserver = NotificationCenter.default.addObserver(forName: .selectedGiftCard, object: nil, queue: OperationQueue.main, using: { (notification) in
             let giftCardVc = notification.object as! GiftCardVC
@@ -607,7 +608,7 @@ class MainVC: UIViewController {
 
     func temporaryMenuArray()->[Menu]{
         var array: [Menu] = []
-        let item1 = Menu(name: "Main", viewController: MainVC())
+        let item1 = Menu(name: "New Item", viewController: NewItemVC())
         let item2 = Menu(name: "Find Item", viewController: FindItemVC())
         let item3 = Menu(name: "Transactions", viewController: TransactionsVC())
         let item4 = Menu(name: "Gift Cards", viewController: GiftCardVC())
