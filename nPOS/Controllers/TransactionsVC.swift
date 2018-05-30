@@ -58,6 +58,67 @@ class TransactionsVC: UIViewController {
         table.backgroundColor = UIColor(named: "background")
         return table
     }()
+    
+    lazy var checkView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowRadius = 5
+        view.layer.shadowOpacity = 0.3
+        view.layer.cornerRadius = 5
+        view.backgroundColor = UIColor(named: "background")
+        return view
+    }()
+    
+    lazy var checkTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Receipt"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkLogo: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "check_logo")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    lazy var checkOrderNumLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Order #:"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Date:"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkSeperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "darkBackground")
+        return view
+    }()
+    
+    
 
     fileprivate func configureNavBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -75,7 +136,7 @@ class TransactionsVC: UIViewController {
         listOfOrdersView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         listOfOrdersView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         listOfOrdersView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
-        listOfOrdersView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        listOfOrdersView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         
         orderHistoryLabel.topAnchor.constraint(equalTo: listOfOrdersView.topAnchor).isActive = true
         orderHistoryLabel.centerXAnchor.constraint(equalTo: listOfOrdersView.centerXAnchor).isActive = true
@@ -97,11 +158,47 @@ class TransactionsVC: UIViewController {
         historyTableView.leftAnchor.constraint(equalTo: listOfOrdersView.leftAnchor, constant: 20).isActive = true
         historyTableView.bottomAnchor.constraint(equalTo: listOfOrdersView.bottomAnchor, constant: -15).isActive = true
         historyTableView.centerXAnchor.constraint(equalTo: listOfOrdersView.centerXAnchor).isActive = true
+        
+        checkView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        checkView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        checkView.leftAnchor.constraint(equalTo: listOfOrdersView.rightAnchor,constant: 40).isActive = true
+        checkView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        checkTitleLabel.topAnchor.constraint(equalTo: checkView.topAnchor).isActive = true
+        checkTitleLabel.centerXAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
+        checkTitleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        checkTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        checkLogo.leftAnchor.constraint(equalTo: checkTitleLabel.rightAnchor,constant: 10).isActive = true
+        checkLogo.centerYAnchor.constraint(equalTo: checkTitleLabel.centerYAnchor).isActive = true
+        checkLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        checkLogo.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        checkOrderNumLabel.topAnchor.constraint(equalTo: checkTitleLabel.bottomAnchor, constant: 20).isActive = true
+        checkOrderNumLabel.leftAnchor.constraint(equalTo: checkView.leftAnchor,constant: 10).isActive = true
+        checkOrderNumLabel.rightAnchor.constraint(equalTo: checkView.rightAnchor).isActive = true
+        checkOrderNumLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        checkDateLabel.topAnchor.constraint(equalTo: checkOrderNumLabel.bottomAnchor, constant: 20).isActive = true
+        checkDateLabel.leftAnchor.constraint(equalTo: checkView.leftAnchor,constant: 10).isActive = true
+        checkDateLabel.rightAnchor.constraint(equalTo: checkView.rightAnchor).isActive = true
+        checkDateLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
+        checkSeperatorView.topAnchor.constraint(equalTo: checkDateLabel.bottomAnchor, constant: 15).isActive = true
+        checkSeperatorView.rightAnchor.constraint(equalTo: checkView.rightAnchor, constant: -10).isActive = true
+        checkSeperatorView.leftAnchor.constraint(equalTo: checkView.leftAnchor, constant: 10).isActive = true
+        checkSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(listOfOrdersView)
+        view.addSubview(checkView)
+        checkView.addSubview(checkTitleLabel)
+        checkView.addSubview(checkLogo)
+        checkView.addSubview(checkOrderNumLabel)
+        checkView.addSubview(checkDateLabel)
+        checkView.addSubview(checkSeperatorView)
         listOfOrdersView.addSubview(orderHistoryLabel)
         listOfOrdersView.addSubview(orderLogo)
         listOfOrdersView.addSubview(seperatorView)

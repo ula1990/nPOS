@@ -93,8 +93,8 @@ class OrderHistoryCell: UITableViewCell {
     
     func updateDataInCell(order: Order){
         orderIdLabel.text = "Order # " + String(order.id!)
-        numberOfItemsLabel.text = "Number Of Items: " + String(order.items!.count)
-        dateLabel.text = "Timestamp: " + String(order.timestamp!)
+        numberOfItemsLabel.text = "Items: " + String(order.items!.count)
+        dateLabel.text = "Date: " + String(order.timestamp!)
         amountLabel.text = "Amount: " + String(order.totalPrice!) + "$"
     }
     
