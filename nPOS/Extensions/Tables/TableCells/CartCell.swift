@@ -32,8 +32,36 @@ class CartCell: UITableViewCell {
         return label
     }()
     
+    let leftColorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor(named: "1")?.withAlphaComponent(0.5)
+        return view
+    }()
+    
+    let rightColorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor(named: "4")?.withAlphaComponent(0.5)
+        return view
+    }()
+    
     
     fileprivate func setupViews(){
+        
+        leftColorView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
+        leftColorView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15).isActive = true
+        leftColorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15).isActive = true
+        leftColorView.widthAnchor.constraint(equalToConstant: 2).isActive = true
+        
+        rightColorView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4).isActive = true
+        rightColorView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15).isActive = true
+        rightColorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15).isActive = true
+        rightColorView.widthAnchor.constraint(equalToConstant: 2).isActive = true
         
         itemNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 10).isActive = true
         itemNameLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
@@ -51,6 +79,8 @@ class CartCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(itemNameLabel)
         addSubview(priceLabel)
+        addSubview(leftColorView)
+        addSubview(rightColorView)
         setupViews()
     }
     

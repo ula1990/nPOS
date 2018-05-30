@@ -17,6 +17,9 @@
 		C00FADC320BD5B09006874FF /* ItemCategoryCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */; };
 		C00FADC520BD7612006874FF /* AddItemTFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC420BD7612006874FF /* AddItemTFExtension.swift */; };
 		C00FADC720BD8BB6006874FF /* MainControllerHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00FADC620BD8BB6006874FF /* MainControllerHandlers.swift */; };
+		C025DB1920BEBA05009E321D /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1820BEBA05009E321D /* DiscountCell.swift */; };
+		C025DB1B20BEBA8F009E321D /* DiscountCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1A20BEBA8F009E321D /* DiscountCollectionExtension.swift */; };
+		C025DB1D20BEBAF7009E321D /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1C20BEBAF7009E321D /* Discount.swift */; };
 		C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03242B820BB4CD200F579F8 /* NotificationExtension.swift */; };
 		C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */; };
 		C076DE6920B48FAB006EC3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C076DE6720B48FAB006EC3C2 /* Main.storyboard */; };
@@ -90,6 +93,9 @@
 		C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryCollection.swift; sourceTree = "<group>"; };
 		C00FADC420BD7612006874FF /* AddItemTFExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTFExtension.swift; sourceTree = "<group>"; };
 		C00FADC620BD8BB6006874FF /* MainControllerHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControllerHandlers.swift; sourceTree = "<group>"; };
+		C025DB1820BEBA05009E321D /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
+		C025DB1A20BEBA8F009E321D /* DiscountCollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCollectionExtension.swift; sourceTree = "<group>"; };
+		C025DB1C20BEBAF7009E321D /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
 		C03242B820BB4CD200F579F8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		C076DE6020B48FAB006EC3C2 /* nPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 				C0ED81DF20B82F90002C5E6D /* Color.swift */,
 				C0827A7520B8067D00BA32C5 /* Tabel.swift */,
 				C076DEAF20B4B7B7006EC3C2 /* Item.swift */,
+				C025DB1C20BEBAF7009E321D /* Discount.swift */,
 				C07D1C5320B6A14800FA3F0C /* MenuModel.swift */,
 				C07D1C4F20B5B55600FA3F0C /* Category.swift */,
 			);
@@ -296,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				C076DEB120B4BBAC006EC3C2 /* ItemCell.swift */,
+				C025DB1820BEBA05009E321D /* DiscountCell.swift */,
 				C0AF7A3220B59D6800CB77D2 /* CategoryCell.swift */,
 				C00FADBE20BD5A76006874FF /* ItemCategoryCell.swift */,
 				C07D1C5120B5FED600FA3F0C /* MenuCell.swift */,
@@ -329,6 +337,7 @@
 				C0827A6D20B6F1CB00BA32C5 /* GiftCardCollection.swift */,
 				C0827A7320B8066500BA32C5 /* TableCollectionExtension.swift */,
 				C00FADC220BD5B09006874FF /* ItemCategoryCollection.swift */,
+				C025DB1A20BEBA8F009E321D /* DiscountCollectionExtension.swift */,
 				C0827A6720B6C85300BA32C5 /* CollectionCells */,
 			);
 			path = Collections;
@@ -528,8 +537,10 @@
 				C076DE9B20B491A8006EC3C2 /* LoginControllerHandlers.swift in Sources */,
 				C0827A7420B8066500BA32C5 /* TableCollectionExtension.swift in Sources */,
 				C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */,
+				C025DB1920BEBA05009E321D /* DiscountCell.swift in Sources */,
 				C076DE9620B4905A006EC3C2 /* User.swift in Sources */,
 				C0E2F06320BBF12000DB88A8 /* IdTextFieldExtension.swift in Sources */,
+				C025DB1B20BEBA8F009E321D /* DiscountCollectionExtension.swift in Sources */,
 				C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */,
 				C00FADBB20BCA10D006874FF /* TotalCalculationExtension.swift in Sources */,
 				C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */,
@@ -559,6 +570,7 @@
 				C076DE9D20B491CE006EC3C2 /* AlertExtension.swift in Sources */,
 				C07D1C5020B5B55600FA3F0C /* Category.swift in Sources */,
 				C076DEAC20B4A964006EC3C2 /* MainTableExtension.swift in Sources */,
+				C025DB1D20BEBAF7009E321D /* Discount.swift in Sources */,
 				C07D1C5D20B6A34500FA3F0C /* CashDrawerVC.swift in Sources */,
 				C076DEB620B4BC10006EC3C2 /* MainCollectionExtension.swift in Sources */,
 				C00FADB920BC92C4006874FF /* AmountGiftCardTFExtension.swift in Sources */,

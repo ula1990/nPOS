@@ -19,7 +19,12 @@ class MainVC: UIViewController {
     var tableObserver: NSObjectProtocol?
     var giftCardObserver: NSObjectProtocol?
     var addItemObserver: NSObjectProtocol?
+    var addDiscountObserver: NSObjectProtocol?
     var totalAmountInfo: Double?
+    var discountLabelHigthAnchor: NSLayoutConstraint?
+    var discountResultLabelHigthAnchor: NSLayoutConstraint?
+    var totalViewHightAnchor: NSLayoutConstraint?
+    var discountsShowing = false
     
     var menuBar: [Menu] = []
     var items: [Item] = []
@@ -153,6 +158,26 @@ class MainVC: UIViewController {
         return view
     }()
     
+    lazy var discountLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Discount:"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    lazy var discountResultLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "$0"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .right
+        return label
+    }()
+    
     lazy var subTotalLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -267,6 +292,8 @@ class MainVC: UIViewController {
         cartView.addSubview(seperatorView)
         cartView.addSubview(clearButton)
         cartView.addSubview(totalView)
+        totalView.addSubview(discountLabel)
+        totalView.addSubview(discountResultLabel)
         totalView.addSubview(subTotalLabel)
         totalView.addSubview(taxLabel)
         totalView.addSubview(totalLabel)
@@ -328,6 +355,31 @@ class MainVC: UIViewController {
             self.itemCollectionView.reloadData()
 
         })
+        
+        addDiscountObserver = NotificationCenter.default.addObserver(forName: .addDiscountToCart, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let addDiscountVC = notification.object as! DiscountVC
+            if self.itemInCart.isEmpty == true{
+                Alert.showBasic(title: "Cart Empty", msg: "Please first add items in the cart", vc: self)
+            }else{
+            self.discountLabel.text = "Discount(" + String(addDiscountVC.selectedDiscountPercent!) + "%)"
+            self.subTotalResultLabel.text = "$" + String(round(Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +))*Double(addDiscountVC.selectedDiscount!)*100)/100)
+            self.taxResultLabel.text = "$" +  String(round((Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +))*addDiscountVC.selectedDiscount!)*100)/100)
+            self.totalResultLabel.text = "$" +  String(round((Double(Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +)) + Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +)))*addDiscountVC.selectedDiscount!)*100)/100)
+            self.discountResultLabel.text = "$" +  String(round((Double(Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +)) + Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +)))*Double(1 - addDiscountVC.selectedDiscount!))*100)/100)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.discountResultLabelHigthAnchor?.isActive = false
+                    self.discountLabelHigthAnchor?.isActive = false
+                    self.totalViewHightAnchor?.isActive = false
+                    self.discountLabelHigthAnchor = self.discountLabel.heightAnchor.constraint(equalToConstant: 40)
+                    self.totalViewHightAnchor = self.totalView.heightAnchor.constraint(equalToConstant: 160)
+                    self.discountResultLabelHigthAnchor = self.discountResultLabel.heightAnchor.constraint(equalToConstant: 40)
+                    self.discountResultLabelHigthAnchor?.isActive = true
+                    self.discountLabelHigthAnchor?.isActive = true
+                    self.totalViewHightAnchor?.isActive = true
+                    self.view.layoutIfNeeded()
+                })
+            }
+            })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -387,38 +439,51 @@ class MainVC: UIViewController {
         
         totalView.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
         totalView.widthAnchor.constraint(equalTo: cartView.widthAnchor).isActive = true
-        totalView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         totalView.bottomAnchor.constraint(equalTo: clearButton.topAnchor, constant: -20).isActive = true
+        totalViewHightAnchor = totalView.heightAnchor.constraint(equalToConstant: 120)
+        totalViewHightAnchor?.isActive = true
         
-        subTotalLabel.topAnchor.constraint(equalTo: totalView.topAnchor).isActive = true
+        discountLabel.bottomAnchor.constraint(equalTo: subTotalLabel.topAnchor).isActive = true
+        discountLabel.leftAnchor.constraint(equalTo: totalView.leftAnchor, constant: 10).isActive = true
+        discountLabel.widthAnchor.constraint(equalToConstant: 130).isActive = true
+        discountLabelHigthAnchor =  discountLabel.heightAnchor.constraint(equalToConstant: 0)
+        discountLabelHigthAnchor?.isActive = true
+        
+        discountResultLabel.bottomAnchor.constraint(equalTo: subTotalLabel.topAnchor).isActive = true
+        discountResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
+        discountResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        discountResultLabelHigthAnchor = discountResultLabel.heightAnchor.constraint(equalToConstant: 0)
+        discountResultLabelHigthAnchor?.isActive = true
+        
+        subTotalLabel.bottomAnchor.constraint(equalTo: taxLabel.topAnchor).isActive = true
         subTotalLabel.leftAnchor.constraint(equalTo: totalView.leftAnchor, constant: 10).isActive = true
         subTotalLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        subTotalLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        subTotalLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        taxLabel.topAnchor.constraint(equalTo: subTotalLabel.bottomAnchor).isActive = true
+        taxLabel.bottomAnchor.constraint(equalTo: totalLabel.topAnchor).isActive = true
         taxLabel.leftAnchor.constraint(equalTo: totalView.leftAnchor, constant: 10).isActive = true
         taxLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        taxLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        taxLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        totalLabel.topAnchor.constraint(equalTo: taxLabel.bottomAnchor).isActive = true
+        totalLabel.bottomAnchor.constraint(equalTo: totalView.bottomAnchor).isActive = true
         totalLabel.leftAnchor.constraint(equalTo: totalView.leftAnchor, constant: 10).isActive = true
         totalLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        totalLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        totalLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        subTotalResultLabel.topAnchor.constraint(equalTo: totalView.topAnchor).isActive = true
+        subTotalResultLabel.bottomAnchor.constraint(equalTo: taxResultLabel.topAnchor).isActive = true
         subTotalResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
         subTotalResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        subTotalResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        subTotalResultLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        taxResultLabel.topAnchor.constraint(equalTo: subTotalLabel.bottomAnchor).isActive = true
+        taxResultLabel.bottomAnchor.constraint(equalTo: totalResultLabel.topAnchor).isActive = true
         taxResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
         taxResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        taxResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        taxResultLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        totalResultLabel.topAnchor.constraint(equalTo: taxLabel.bottomAnchor).isActive = true
+        totalResultLabel.bottomAnchor.constraint(equalTo: totalView.bottomAnchor).isActive = true
         totalResultLabel.rightAnchor.constraint(equalTo: totalView.rightAnchor, constant: -10).isActive = true
         totalResultLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        totalResultLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        totalResultLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         clearButton.bottomAnchor.constraint(equalTo: chargeButton.topAnchor).isActive = true
         clearButton.centerXAnchor.constraint(equalTo: cartView.centerXAnchor).isActive = true
@@ -466,6 +531,22 @@ class MainVC: UIViewController {
         totalResultLabel.text = "$0"
         taxResultLabel.text = totalResultLabel.text
         subTotalResultLabel.text = totalResultLabel.text
+        discountResultLabel.text = totalResultLabel.text
+        discountLabel.text = "Discount"
+        discountsShowing = false
+            UIView.animate(withDuration: 0.3) {
+                self.discountResultLabelHigthAnchor?.isActive = false
+                self.discountLabelHigthAnchor?.isActive = false
+                self.totalViewHightAnchor?.isActive = false
+                self.discountLabelHigthAnchor = self.discountLabel.heightAnchor.constraint(equalToConstant: 0)
+                self.totalViewHightAnchor = self.totalView.heightAnchor.constraint(equalToConstant: 120)
+                self.discountResultLabelHigthAnchor = self.discountResultLabel.heightAnchor.constraint(equalToConstant: 0)
+                self.discountResultLabelHigthAnchor?.isActive = true
+                self.discountLabelHigthAnchor?.isActive = true
+                self.totalViewHightAnchor?.isActive = true
+                self.view.layoutIfNeeded()
+            }
+       
     }
 
     func setupNavBarWithUser(user: User){
@@ -509,6 +590,39 @@ class MainVC: UIViewController {
         containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
         
         self.navigationItem.titleView = titleView
+    }
+    
+    @objc fileprivate func hideShowDiscounts(){
+    if (discountsShowing){
+    UIView.animate(withDuration: 0.3) {
+        self.discountResultLabelHigthAnchor?.isActive = false
+        self.discountLabelHigthAnchor?.isActive = false
+        self.totalViewHightAnchor?.isActive = false
+        self.discountLabelHigthAnchor = self.discountLabel.heightAnchor.constraint(equalToConstant: 0)
+        self.totalViewHightAnchor = self.totalView.heightAnchor.constraint(equalToConstant: 120)
+        self.discountResultLabelHigthAnchor = self.discountResultLabel.heightAnchor.constraint(equalToConstant: 0)
+        self.discountResultLabelHigthAnchor?.isActive = true
+        self.discountLabelHigthAnchor?.isActive = true
+        self.totalViewHightAnchor?.isActive = true
+        self.view.layoutIfNeeded()
+    }
+    }else{
+    UIView.animate(withDuration: 0.3, animations: {
+        self.discountResultLabelHigthAnchor?.isActive = false
+        self.discountLabelHigthAnchor?.isActive = false
+        self.totalViewHightAnchor?.isActive = false
+        self.discountLabelHigthAnchor = self.discountLabel.heightAnchor.constraint(equalToConstant: 40)
+        self.totalViewHightAnchor = self.totalView.heightAnchor.constraint(equalToConstant: 160)
+        self.discountResultLabelHigthAnchor = self.discountResultLabel.heightAnchor.constraint(equalToConstant: 40)
+        self.discountResultLabelHigthAnchor?.isActive = true
+        self.discountLabelHigthAnchor?.isActive = true
+        self.totalViewHightAnchor?.isActive = true
+        self.view.layoutIfNeeded()
+    }) { (true) in
+    }
+    }
+    discountsShowing = !discountsShowing
+    
     }
 
 }

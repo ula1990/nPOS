@@ -46,7 +46,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == itemCollectionView {
         let item = items[indexPath.row]
-            if tableLabel.text == "Select Table"{
+            if tableLabel.text == "Table #"{
                 Alert.showBasic(title: "Select Table", msg: "To start order you need to select table.", vc: self)
             }else{
                 itemInCart.append(item)

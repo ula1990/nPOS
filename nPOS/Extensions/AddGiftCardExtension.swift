@@ -24,11 +24,10 @@ extension GiftCardVC {
             
         }
         
-        func addToCardList(amount: Double, name: String){
+       @objc public func addToCardList(amount: Double, name: String){
             let newCard = Item(id: "1", name: name , imageName: "card", price: amount, vat: 0, desc: "Gift Card", category: 9)
             cards.append(newCard)
             giftCardCollectionView.reloadData()
-    
     }
     
     
