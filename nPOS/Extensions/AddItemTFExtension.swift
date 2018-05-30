@@ -49,8 +49,8 @@ extension NewItemVC: UITextFieldDelegate {
         if itemPriceTF.text?.isEmpty == true{
             print(Error.self)
         }else{
-            taxAmount = 0.3 * Double(itemPriceTF.text!)!
-            nettoAmount = 0.7 * Double(itemPriceTF.text!)!
+            taxAmount = Double(round((0.3 * Double(itemPriceTF.text!)!)*100)/100)
+            nettoAmount = Double(round((0.7 * Double(itemPriceTF.text!)!)*100)/100)
             itemPriceNettoResult.text = "$ " + String(nettoAmount!) + "-"
             itemPriceTaxResult.text = "$ " + String(taxAmount!) + "-"
         }
