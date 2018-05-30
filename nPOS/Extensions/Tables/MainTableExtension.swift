@@ -29,5 +29,20 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
             return cartTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let closeAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+
+            self.itemInCart.remove(at: indexPath.row)
+            self.cartTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.cartTableView.reloadData()
+            self.calculateTotal()
+            
+            success(true)
+        })
+        closeAction.title = "Delete"
+        closeAction.backgroundColor = UIColor(named:"4")
+        return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
     
 }

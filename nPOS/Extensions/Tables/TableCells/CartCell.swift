@@ -37,7 +37,7 @@ class CartCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "1")?.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor(named: "4")?.withAlphaComponent(0.5)
         return view
     }()
     
@@ -46,7 +46,7 @@ class CartCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "4")?.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor(named: "1")?.withAlphaComponent(0.5)
         return view
     }()
     
