@@ -54,7 +54,6 @@ extension NewItemVC: UITextFieldDelegate {
             itemPriceNettoResult.text = "$ " + String(nettoAmount!) + "-"
             itemPriceTaxResult.text = "$ " + String(taxAmount!) + "-"
         }
-        
-        
+
     }
 }

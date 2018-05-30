@@ -20,6 +20,9 @@
 		C025DB1920BEBA05009E321D /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1820BEBA05009E321D /* DiscountCell.swift */; };
 		C025DB1B20BEBA8F009E321D /* DiscountCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1A20BEBA8F009E321D /* DiscountCollectionExtension.swift */; };
 		C025DB1D20BEBAF7009E321D /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1C20BEBAF7009E321D /* Discount.swift */; };
+		C025DB1F20BF30A9009E321D /* OrderHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB1E20BF30A9009E321D /* OrderHistoryCell.swift */; };
+		C025DB2120BF30E7009E321D /* TransactionTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB2020BF30E7009E321D /* TransactionTableExtension.swift */; };
+		C025DB2320BF31E2009E321D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB2220BF31E2009E321D /* Order.swift */; };
 		C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03242B820BB4CD200F579F8 /* NotificationExtension.swift */; };
 		C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */; };
 		C076DE6920B48FAB006EC3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C076DE6720B48FAB006EC3C2 /* Main.storyboard */; };
@@ -96,6 +99,9 @@
 		C025DB1820BEBA05009E321D /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
 		C025DB1A20BEBA8F009E321D /* DiscountCollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCollectionExtension.swift; sourceTree = "<group>"; };
 		C025DB1C20BEBAF7009E321D /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
+		C025DB1E20BF30A9009E321D /* OrderHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryCell.swift; sourceTree = "<group>"; };
+		C025DB2020BF30E7009E321D /* TransactionTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableExtension.swift; sourceTree = "<group>"; };
+		C025DB2220BF31E2009E321D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		C03242B820BB4CD200F579F8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		C076DE6020B48FAB006EC3C2 /* nPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 				C0ED81DF20B82F90002C5E6D /* Color.swift */,
 				C0827A7520B8067D00BA32C5 /* Tabel.swift */,
 				C076DEAF20B4B7B7006EC3C2 /* Item.swift */,
+				C025DB2220BF31E2009E321D /* Order.swift */,
 				C025DB1C20BEBAF7009E321D /* Discount.swift */,
 				C07D1C5320B6A14800FA3F0C /* MenuModel.swift */,
 				C07D1C4F20B5B55600FA3F0C /* Category.swift */,
@@ -317,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				C076DEAD20B4B765006EC3C2 /* CartCell.swift */,
+				C025DB1E20BF30A9009E321D /* OrderHistoryCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				C076DEAB20B4A964006EC3C2 /* MainTableExtension.swift */,
+				C025DB2020BF30E7009E321D /* TransactionTableExtension.swift */,
 				C0827A6820B6C86A00BA32C5 /* TableCells */,
 			);
 			path = Tables;
@@ -542,6 +551,7 @@
 				C0E2F06320BBF12000DB88A8 /* IdTextFieldExtension.swift in Sources */,
 				C025DB1B20BEBA8F009E321D /* DiscountCollectionExtension.swift in Sources */,
 				C0ED81DC20B82AB3002C5E6D /* SelectColorVC.swift in Sources */,
+				C025DB2320BF31E2009E321D /* Order.swift in Sources */,
 				C00FADBB20BCA10D006874FF /* TotalCalculationExtension.swift in Sources */,
 				C0AF7A3320B59D6800CB77D2 /* CategoryCell.swift in Sources */,
 				C0827A6E20B6F1CB00BA32C5 /* GiftCardCollection.swift in Sources */,
@@ -561,6 +571,7 @@
 				C00FADC320BD5B09006874FF /* ItemCategoryCollection.swift in Sources */,
 				C07D1C6320B6A3D500FA3F0C /* DiscountVC.swift in Sources */,
 				C00FADB720BC906A006874FF /* AddGiftCardExtension.swift in Sources */,
+				C025DB1F20BF30A9009E321D /* OrderHistoryCell.swift in Sources */,
 				C076DEA620B493EE006EC3C2 /* ImageCacheExtensions.swift in Sources */,
 				C0827A7620B8067E00BA32C5 /* Tabel.swift in Sources */,
 				C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */,
@@ -569,6 +580,7 @@
 				C076DE9920B49170006EC3C2 /* LoginController.swift in Sources */,
 				C076DE9D20B491CE006EC3C2 /* AlertExtension.swift in Sources */,
 				C07D1C5020B5B55600FA3F0C /* Category.swift in Sources */,
+				C025DB2120BF30E7009E321D /* TransactionTableExtension.swift in Sources */,
 				C076DEAC20B4A964006EC3C2 /* MainTableExtension.swift in Sources */,
 				C025DB1D20BEBAF7009E321D /* Discount.swift in Sources */,
 				C07D1C5D20B6A34500FA3F0C /* CashDrawerVC.swift in Sources */,

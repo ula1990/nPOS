@@ -33,9 +33,7 @@ class ItemCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 17)
         return label
     }()
-    
-    
-    
+
     func  setupView(){
         addSubview(colorView)
         addSubview(itemName)
