@@ -32,7 +32,7 @@ extension DiscountVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 174, height: 60)
+        return CGSize(width: 174, height: 80)
     }
     
     

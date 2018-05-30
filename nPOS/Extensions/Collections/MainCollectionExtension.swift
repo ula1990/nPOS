@@ -60,38 +60,39 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
             if category.id == 1{
                 items.removeAll()
                 items = temporaryAppetizersArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 2{
                 items.removeAll()
                 items = temporarySaladsArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 3{
                 items.removeAll()
                 items = temporaryDrinksArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 4{
                 items.removeAll()
                 items = temporarySpiritsArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 5{
                 items.removeAll()
                 items = temporaryEntreesArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 6{
                 items.removeAll()
                 items = temporaryDesertsArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 7{
                 items.removeAll()
                 items = temporaryBeersArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else if category.id == 8{
                 items.removeAll()
                 items = temporaryWineArray()
-                itemCollectionView.reloadData()
+                reloadCategoryData()
             }else{
                 items.removeAll()
                 items = temporaryArray()
+                reloadCategoryData()
             }
         }else{
             let menu = menuBar[indexPath.row]

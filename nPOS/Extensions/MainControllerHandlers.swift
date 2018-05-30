@@ -377,5 +377,10 @@ extension MainVC {
         return array
     }
 
+    public func reloadCategoryData(){
+        UIView.transition(with: itemCollectionView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            self.itemCollectionView.reloadData()
+        }, completion: nil)
+    }
     
 }
