@@ -44,5 +44,20 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let closeAction = UIContextualAction(style: .destructive, title:  "More", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            self.itemInCart.append(self.itemInCart[indexPath.row])
+            self.cartTableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.cartTableView.reloadData()
+            self.calculateTotal()
+            
+            success(true)
+        })
+        closeAction.title = "More"
+        closeAction.backgroundColor = UIColor(named:"1")
+        return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
     
 }

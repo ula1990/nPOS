@@ -43,7 +43,7 @@ class DiscountCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = UIColor.white.withAlphaComponent(1)
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.backgroundColor = UIColor(named: "7")
+        label.backgroundColor = UIColor(named: "1")
         label.layer.cornerRadius = 2
         label.clipsToBounds = true
         return label

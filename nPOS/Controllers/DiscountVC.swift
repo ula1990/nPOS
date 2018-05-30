@@ -54,7 +54,7 @@ class DiscountVC: UIViewController {
         layout.minimumLineSpacing = 2
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(DiscountCell.self, forCellWithReuseIdentifier: discountCellId)
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0)
+        view.backgroundColor = UIColor(named: "darkBackground")?.withAlphaComponent(0.8)
         view.isScrollEnabled = true
         view.layer.cornerRadius = 2
         return view

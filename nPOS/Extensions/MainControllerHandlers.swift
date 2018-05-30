@@ -309,14 +309,14 @@ extension MainVC {
     
     @objc public func temporarySpiritsArray()->[Item]{
         var array: [Item] = []
-        let item1 = Item(id: "1", name: "Vodka", imageName: "burger1", price: 8.99, vat: 0.55, desc: "Nice", category: 6)
-        let item2 = Item(id: "2", name: "Rum", imageName: "burger2", price: 22.99, vat: 2.0, desc: "Nice", category: 6)
-        let item3 = Item(id: "3", name: "Grey Goose", imageName: "burger3", price: 44.99, vat: 4.65, desc: "Nice", category: 6)
-        let item4 = Item(id: "4", name: "Old Tom Jin", imageName: "burger1", price: 2.99, vat: 0.20, desc: "Nice", category: 6)
-        let item5 = Item(id: "5", name: "Jagermister", imageName: "burger2", price: 0.99, vat: 0.12, desc: "Nice", category: 6)
-        let item6 = Item(id: "6", name: "Apple Vodka", imageName: "burger3", price: 35.99, vat: 3.40, desc: "Nice", category:6)
-        let item7 = Item(id: "7", name: "Rum", imageName: "burger2", price: 5.99, vat: 0.51, desc: "Nice", category: 6)
-        let item8 = Item(id: "8", name: "Rum", imageName: "burger1", price: 7.99, vat: 0.79, desc: "Nice", category: 6)
+        let item1 = Item(id: "1", name: "Vodka", imageName: "burger1", price: 8.99, vat: 0.55, desc: "Nice", category: 4)
+        let item2 = Item(id: "2", name: "Rum", imageName: "burger2", price: 22.99, vat: 2.0, desc: "Nice", category: 4)
+        let item3 = Item(id: "3", name: "Grey Goose", imageName: "burger3", price: 44.99, vat: 4.65, desc: "Nice", category: 4)
+        let item4 = Item(id: "4", name: "Old Tom Jin", imageName: "burger1", price: 2.99, vat: 0.20, desc: "Nice", category: 4)
+        let item5 = Item(id: "5", name: "Jagermister", imageName: "burger2", price: 0.99, vat: 0.12, desc: "Nice", category: 4)
+        let item6 = Item(id: "6", name: "Apple Vodka", imageName: "burger3", price: 35.99, vat: 3.40, desc: "Nice", category:4)
+        let item7 = Item(id: "7", name: "Rum", imageName: "burger2", price: 5.99, vat: 0.51, desc: "Nice", category: 4)
+        let item8 = Item(id: "8", name: "Rum", imageName: "burger1", price: 7.99, vat: 0.79, desc: "Nice", category: 4)
         
         
         array.append(item1)
