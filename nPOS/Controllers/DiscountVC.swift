@@ -59,6 +59,17 @@ class DiscountVC: UIViewController {
         view.layer.cornerRadius = 2
         return view
     }()
+    
+    lazy var cancelDiscount: UIButton = {
+        let button = UIButton()
+        button.backgroundColor =  UIColor(named: "chargeButton")
+        button.setTitle("Cancel", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white.withAlphaComponent(0.8), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17 )
+        button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+        return button
+    }()
 
     fileprivate func configureNavBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -90,7 +101,13 @@ class DiscountVC: UIViewController {
         discountsCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 20).isActive = true
         discountsCollectionView.leftAnchor.constraint(equalTo: discountView.leftAnchor,constant: 5).isActive = true
         discountsCollectionView.rightAnchor.constraint(equalTo: discountView.rightAnchor,constant: -5).isActive = true
-        discountsCollectionView.bottomAnchor.constraint(equalTo: discountView.bottomAnchor,constant: -10).isActive = true
+        discountsCollectionView.bottomAnchor.constraint(equalTo: cancelDiscount.topAnchor,constant: -10).isActive = true
+        
+        cancelDiscount.bottomAnchor.constraint(equalTo: discountView.bottomAnchor,constant: -10).isActive = true
+        cancelDiscount.centerXAnchor.constraint(equalTo: discountView.centerXAnchor).isActive = true
+        cancelDiscount.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        cancelDiscount.leftAnchor.constraint(equalTo: discountView.leftAnchor, constant: 10).isActive = true
+        cancelDiscount.rightAnchor.constraint(equalTo: discountView.rightAnchor, constant: -10).isActive = true
 
         
     }
@@ -102,6 +119,7 @@ class DiscountVC: UIViewController {
         discountView.addSubview(titleLabel)
         discountView.addSubview(titleLogo)
         discountView.addSubview(discountsCollectionView)
+        discountView.addSubview(cancelDiscount)
         view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.7)
         configureNavBar()
         setupView()

@@ -56,7 +56,43 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
             }
         
         }else if collectionView == categoryCollectionView{
-            print(Error.self)
+            let category = categoryList[indexPath.row]
+            if category.id == 1{
+                items.removeAll()
+                items = temporaryAppetizersArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 2{
+                items.removeAll()
+                items = temporarySaladsArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 3{
+                items.removeAll()
+                items = temporaryDrinksArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 4{
+                items.removeAll()
+                items = temporarySpiritsArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 5{
+                items.removeAll()
+                items = temporaryEntreesArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 6{
+                items.removeAll()
+                items = temporaryDesertsArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 7{
+                items.removeAll()
+                items = temporaryBeersArray()
+                itemCollectionView.reloadData()
+            }else if category.id == 8{
+                items.removeAll()
+                items = temporaryWineArray()
+                itemCollectionView.reloadData()
+            }else{
+                items.removeAll()
+                items = temporaryArray()
+            }
         }else{
             let menu = menuBar[indexPath.row]
             let menuVC = UINavigationController(rootViewController: menu.viewController!)
