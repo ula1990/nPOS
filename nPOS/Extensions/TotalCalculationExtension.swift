@@ -15,5 +15,6 @@ extension MainVC {
         self.subTotalResultLabel.text = "$" + String(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +))
         self.taxResultLabel.text = "$" +  String(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +))
         self.totalResultLabel.text = "$" +  String(Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +)) + Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +)))
+        self.discountResultLabel.text = "$" +  String(round((Double(Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +)) + Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +)))*Double(1 - self.discountHolder))*100)/100)
     }
 }

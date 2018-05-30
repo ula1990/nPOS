@@ -25,6 +25,8 @@ class MainVC: UIViewController {
     var discountResultLabelHigthAnchor: NSLayoutConstraint?
     var totalViewHightAnchor: NSLayoutConstraint?
     var discountsShowing = false
+    var discountHolder: Double = 0
+    
     
     var menuBar: [Menu] = []
     var items: [Item] = []
@@ -361,6 +363,7 @@ class MainVC: UIViewController {
             if self.itemInCart.isEmpty == true{
                 Alert.showBasic(title: "Cart Empty", msg: "Please first add items in the cart", vc: self)
             }else{
+            self.discountHolder = addDiscountVC.selectedDiscount!
             self.discountLabel.text = "Discount(" + String(addDiscountVC.selectedDiscountPercent!) + "%)"
             self.subTotalResultLabel.text = "$" + String(round(Double(self.itemInCart.compactMap({ Double($0.price!) }).reduce(0, +))*Double(addDiscountVC.selectedDiscount!)*100)/100)
             self.taxResultLabel.text = "$" +  String(round((Double(self.itemInCart.compactMap({ Double($0.vat!) }).reduce(0, +))*addDiscountVC.selectedDiscount!)*100)/100)
@@ -534,6 +537,7 @@ class MainVC: UIViewController {
         discountResultLabel.text = totalResultLabel.text
         discountLabel.text = "Discount"
         discountsShowing = false
+        discountHolder = 0
             UIView.animate(withDuration: 0.3) {
                 self.discountResultLabelHigthAnchor?.isActive = false
                 self.discountLabelHigthAnchor?.isActive = false
