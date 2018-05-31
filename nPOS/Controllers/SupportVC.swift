@@ -18,7 +18,6 @@ class SupportVC: UIViewController {
         navigationItem.title = "Support"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = .white
-        
     }
 
     override func viewDidLoad() {

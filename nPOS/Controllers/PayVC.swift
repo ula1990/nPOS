@@ -38,7 +38,7 @@ class PayVC: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowRadius = 5
         view.layer.shadowOpacity = 0.3
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 2
         view.backgroundColor = UIColor(named: "background")
         return view
     }()
@@ -66,7 +66,7 @@ class PayVC: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowRadius = 5
         view.layer.shadowOpacity = 0.3
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 2
         view.backgroundColor = UIColor(named: "background")
         return view
     }()
@@ -115,7 +115,7 @@ class PayVC: UIViewController {
         payView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         payView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         payView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        payView.widthAnchor.constraint(equalToConstant: 500).isActive = true
+        payView.widthAnchor.constraint(equalToConstant: 400).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: payView.topAnchor,constant: 10).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: payView.centerXAnchor).isActive = true
@@ -126,7 +126,7 @@ class PayVC: UIViewController {
         cardPaymentView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         cardPaymentView.leftAnchor.constraint(equalTo: payView.leftAnchor, constant: 20).isActive = true
         cardPaymentView.heightAnchor.constraint(equalToConstant: 170).isActive = true
-        cardPaymentView.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        cardPaymentView.widthAnchor.constraint(equalToConstant: 170).isActive = true
         
         cardPaymentLabel.topAnchor.constraint(equalTo: cardPaymentView.topAnchor,constant: 5).isActive = true
         cardPaymentLabel.centerXAnchor.constraint(equalTo: cardPaymentView.centerXAnchor).isActive = true
@@ -142,7 +142,7 @@ class PayVC: UIViewController {
         cashPaymentView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         cashPaymentView.rightAnchor.constraint(equalTo: payView.rightAnchor, constant: -20).isActive = true
         cashPaymentView.heightAnchor.constraint(equalToConstant: 170).isActive = true
-        cashPaymentView.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        cashPaymentView.widthAnchor.constraint(equalToConstant: 170).isActive = true
         
         cashPaymentLabel.topAnchor.constraint(equalTo: cashPaymentView.topAnchor,constant: 5).isActive = true
         cashPaymentLabel.centerXAnchor.constraint(equalTo: cashPaymentView.centerXAnchor).isActive = true
