@@ -272,7 +272,7 @@ class MainVC: UIViewController {
         layout.minimumLineSpacing = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(ItemCell.self, forCellWithReuseIdentifier: itemCellId)
-        view.backgroundColor = UIColor(named: "background")
+        view.backgroundColor = UIColor(named: "darkBackground")
         view.isScrollEnabled = true
         return view
     }()

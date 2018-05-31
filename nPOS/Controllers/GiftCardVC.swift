@@ -127,7 +127,7 @@ class GiftCardVC: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 1, bottom: 1, right: 1)
+        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         view.translatesAutoresizingMaskIntoConstraints = false

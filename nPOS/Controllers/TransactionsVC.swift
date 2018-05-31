@@ -11,7 +11,9 @@ import UIKit
 class TransactionsVC: UIViewController {
     
     let historyCellId = "historyCellId"
+    let checkItemsCellId = "checkItemsCellId"
     var listOfOrders: [Order] = []
+    var listOfItems: [Item] = []
     
     lazy var listOfOrdersView: UIView = {
         let view = UIView()
@@ -118,6 +120,67 @@ class TransactionsVC: UIViewController {
         return view
     }()
     
+    lazy var checkSecondSeperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "darkBackground")
+        return view
+    }()
+    
+    
+    lazy var checkTotalLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Total Paid:"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkTaxLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Tax:"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .left
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkTotalResultLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "$0-"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .right
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkTaxResultLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "$0-"
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .right
+        label.backgroundColor = UIColor(named: "background")
+        return label
+    }()
+    
+    lazy var checkItemsTableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(CheckItemCell.self, forCellReuseIdentifier: checkItemsCellId)
+        //        table.separatorStyle = .none
+        table.backgroundColor = UIColor(named: "background")
+        return table
+    }()
+    
     
 
     fileprivate func configureNavBar() {
@@ -136,7 +199,7 @@ class TransactionsVC: UIViewController {
         listOfOrdersView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         listOfOrdersView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         listOfOrdersView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
-        listOfOrdersView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        listOfOrdersView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
         orderHistoryLabel.topAnchor.constraint(equalTo: listOfOrdersView.topAnchor).isActive = true
         orderHistoryLabel.centerXAnchor.constraint(equalTo: listOfOrdersView.centerXAnchor).isActive = true
@@ -154,8 +217,8 @@ class TransactionsVC: UIViewController {
         seperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         historyTableView.topAnchor.constraint(equalTo: seperatorView.bottomAnchor, constant: 15).isActive = true
-        historyTableView.rightAnchor.constraint(equalTo: listOfOrdersView.rightAnchor, constant: -20).isActive = true
-        historyTableView.leftAnchor.constraint(equalTo: listOfOrdersView.leftAnchor, constant: 20).isActive = true
+        historyTableView.rightAnchor.constraint(equalTo: listOfOrdersView.rightAnchor, constant: -5).isActive = true
+        historyTableView.leftAnchor.constraint(equalTo: listOfOrdersView.leftAnchor, constant: 5).isActive = true
         historyTableView.bottomAnchor.constraint(equalTo: listOfOrdersView.bottomAnchor, constant: -15).isActive = true
         historyTableView.centerXAnchor.constraint(equalTo: listOfOrdersView.centerXAnchor).isActive = true
         
@@ -174,12 +237,12 @@ class TransactionsVC: UIViewController {
         checkLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
         checkLogo.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        checkOrderNumLabel.topAnchor.constraint(equalTo: checkTitleLabel.bottomAnchor, constant: 20).isActive = true
+        checkOrderNumLabel.topAnchor.constraint(equalTo: checkTitleLabel.bottomAnchor, constant: 10).isActive = true
         checkOrderNumLabel.leftAnchor.constraint(equalTo: checkView.leftAnchor,constant: 10).isActive = true
         checkOrderNumLabel.rightAnchor.constraint(equalTo: checkView.rightAnchor).isActive = true
         checkOrderNumLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        checkDateLabel.topAnchor.constraint(equalTo: checkOrderNumLabel.bottomAnchor, constant: 20).isActive = true
+        checkDateLabel.topAnchor.constraint(equalTo: checkOrderNumLabel.bottomAnchor, constant: 10).isActive = true
         checkDateLabel.leftAnchor.constraint(equalTo: checkView.leftAnchor,constant: 10).isActive = true
         checkDateLabel.rightAnchor.constraint(equalTo: checkView.rightAnchor).isActive = true
         checkDateLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -188,6 +251,40 @@ class TransactionsVC: UIViewController {
         checkSeperatorView.rightAnchor.constraint(equalTo: checkView.rightAnchor, constant: -10).isActive = true
         checkSeperatorView.leftAnchor.constraint(equalTo: checkView.leftAnchor, constant: 10).isActive = true
         checkSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        checkSecondSeperatorView.bottomAnchor.constraint(equalTo: checkTaxLabel.topAnchor, constant: -15).isActive = true
+        checkSecondSeperatorView.rightAnchor.constraint(equalTo: checkView.rightAnchor, constant: -10).isActive = true
+        checkSecondSeperatorView.leftAnchor.constraint(equalTo: checkView.leftAnchor, constant: 10).isActive = true
+        checkSecondSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        checkTaxLabel.bottomAnchor.constraint(equalTo: checkTotalLabel.topAnchor, constant: -10).isActive = true
+        checkTaxLabel.leftAnchor.constraint(equalTo: checkView.leftAnchor,constant: 10).isActive = true
+        checkTaxLabel.rightAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
+        checkTaxLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        checkTotalLabel.bottomAnchor.constraint(equalTo: checkView.bottomAnchor, constant: -20).isActive = true
+        checkTotalLabel.leftAnchor.constraint(equalTo: checkView.leftAnchor,constant: 10).isActive = true
+        checkTotalLabel.rightAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
+        checkTotalLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        
+        checkTaxResultLabel.bottomAnchor.constraint(equalTo: checkTotalLabel.topAnchor, constant: -10).isActive = true
+        checkTaxResultLabel.rightAnchor.constraint(equalTo: checkView.rightAnchor,constant: -10).isActive = true
+        checkTaxResultLabel.leftAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
+        checkTaxResultLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        checkTotalResultLabel.bottomAnchor.constraint(equalTo: checkView.bottomAnchor, constant: -20).isActive = true
+        checkTotalResultLabel.rightAnchor.constraint(equalTo: checkView.rightAnchor,constant: -10).isActive = true
+        checkTotalResultLabel.leftAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
+        checkTotalResultLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+    
+        checkItemsTableView.topAnchor.constraint(equalTo: checkSeperatorView.bottomAnchor, constant: 15).isActive = true
+        checkItemsTableView.rightAnchor.constraint(equalTo: checkView.rightAnchor, constant: -5).isActive = true
+        checkItemsTableView.leftAnchor.constraint(equalTo: checkView.leftAnchor, constant: 5).isActive = true
+        checkItemsTableView.bottomAnchor.constraint(equalTo: checkSecondSeperatorView.topAnchor, constant: -15).isActive = true
+        checkItemsTableView.centerXAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
+        
     }
     
     override func viewDidLoad() {
@@ -199,6 +296,12 @@ class TransactionsVC: UIViewController {
         checkView.addSubview(checkOrderNumLabel)
         checkView.addSubview(checkDateLabel)
         checkView.addSubview(checkSeperatorView)
+        checkView.addSubview(checkTotalLabel)
+        checkView.addSubview(checkTaxLabel)
+        checkView.addSubview(checkTotalResultLabel)
+        checkView.addSubview(checkTaxResultLabel)
+        checkView.addSubview(checkSecondSeperatorView)
+        checkView.addSubview(checkItemsTableView)
         listOfOrdersView.addSubview(orderHistoryLabel)
         listOfOrdersView.addSubview(orderLogo)
         listOfOrdersView.addSubview(seperatorView)
@@ -208,6 +311,8 @@ class TransactionsVC: UIViewController {
         configureNavBar()
         historyTableView.delegate = self
         historyTableView.dataSource = self
+        checkItemsTableView.delegate = self
+        checkItemsTableView.dataSource = self
         listOfOrders = temporaryOrderListArray()
     }
     

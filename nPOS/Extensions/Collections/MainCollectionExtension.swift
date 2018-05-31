@@ -105,7 +105,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == itemCollectionView {
-            return CGSize(width: 175, height: 90)
+            return CGSize(width: 175, height: 70)
         }else if collectionView == categoryCollectionView{
             return CGSize(width: 175, height: 130)
         }else{

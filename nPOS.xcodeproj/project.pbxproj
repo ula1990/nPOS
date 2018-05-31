@@ -24,6 +24,7 @@
 		C025DB2120BF30E7009E321D /* TransactionTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB2020BF30E7009E321D /* TransactionTableExtension.swift */; };
 		C025DB2320BF31E2009E321D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025DB2220BF31E2009E321D /* Order.swift */; };
 		C03242B920BB4CD200F579F8 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03242B820BB4CD200F579F8 /* NotificationExtension.swift */; };
+		C04668F620BFE46A00424956 /* CheckItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04668F520BFE46A00424956 /* CheckItemCell.swift */; };
 		C076DE6420B48FAB006EC3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */; };
 		C076DE6920B48FAB006EC3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C076DE6720B48FAB006EC3C2 /* Main.storyboard */; };
 		C076DE6C20B48FAB006EC3C2 /* nPOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C076DE6A20B48FAB006EC3C2 /* nPOS.xcdatamodeld */; };
@@ -103,6 +104,7 @@
 		C025DB2020BF30E7009E321D /* TransactionTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableExtension.swift; sourceTree = "<group>"; };
 		C025DB2220BF31E2009E321D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		C03242B820BB4CD200F579F8 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		C04668F520BFE46A00424956 /* CheckItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemCell.swift; sourceTree = "<group>"; };
 		C076DE6020B48FAB006EC3C2 /* nPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C076DE6320B48FAB006EC3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C076DE6820B48FAB006EC3C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			children = (
 				C076DEAD20B4B765006EC3C2 /* CartCell.swift */,
 				C025DB1E20BF30A9009E321D /* OrderHistoryCell.swift */,
+				C04668F520BFE46A00424956 /* CheckItemCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C04668F620BFE46A00424956 /* CheckItemCell.swift in Sources */,
 				C07D1C5B20B6A31F00FA3F0C /* GiftCardVC.swift in Sources */,
 				C076DEB220B4BBAC006EC3C2 /* ItemCell.swift in Sources */,
 				C0E2F06120BBEC8500DB88A8 /* AddTableExtension.swift in Sources */,
