@@ -210,7 +210,7 @@ class TransactionsVC: UIViewController {
         text.textAlignment = .left
         text.textColor = UIColor.white.withAlphaComponent(0.8)
         text.font = UIFont.systemFont(ofSize: 17)
-        text.text = "To create a new table  you need to put first, id of the table in the text field from the left side of the screen,provide the name of the table,which staff can easily recognize and after that select category of the table which will show amount of the places on the table"
+        text.text = "Please don't forgot, if you want to modify the order or make a return of the receipt you need Admin privileges"
         text.backgroundColor = UIColor(named: "background")
         return text
     }()
