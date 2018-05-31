@@ -14,6 +14,9 @@ class TransactionsVC: UIViewController {
     let checkItemsCellId = "checkItemsCellId"
     var listOfOrders: [Order] = []
     var listOfItems: [Item] = []
+    var checkWidthAnchor: NSLayoutConstraint?
+    var checkTitleWidthAnchor: NSLayoutConstraint?
+    var checkLogoWidthAnchor: NSLayoutConstraint?
     
     lazy var listOfOrdersView: UIView = {
         let view = UIView()
@@ -176,9 +179,40 @@ class TransactionsVC: UIViewController {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(CheckItemCell.self, forCellReuseIdentifier: checkItemsCellId)
-        //        table.separatorStyle = .none
+        table.separatorStyle = .none
         table.backgroundColor = UIColor(named: "background")
         return table
+    }()
+    
+    lazy var infoView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowRadius = 5
+        view.layer.shadowOpacity = 0.3
+        view.layer.cornerRadius = 5
+        view.backgroundColor = UIColor(named: "background")
+        return view
+    }()
+    
+    lazy var orderInfoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.textColor = UIColor.white.withAlphaComponent(0.8)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "Information"
+        return label
+    }()
+    
+    lazy var orderTextInfo: UITextView = {
+        let text = UITextView()
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.textAlignment = .left
+        text.textColor = UIColor.white.withAlphaComponent(0.8)
+        text.font = UIFont.systemFont(ofSize: 17)
+        text.text = "To create a new table  you need to put first, id of the table in the text field from the left side of the screen,provide the name of the table,which staff can easily recognize and after that select category of the table which will show amount of the places on the table"
+        text.backgroundColor = UIColor(named: "background")
+        return text
     }()
     
     
@@ -225,16 +259,19 @@ class TransactionsVC: UIViewController {
         checkView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         checkView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         checkView.leftAnchor.constraint(equalTo: listOfOrdersView.rightAnchor,constant: 40).isActive = true
-        checkView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        checkWidthAnchor = checkView.widthAnchor.constraint(equalToConstant: 0)
+        checkWidthAnchor?.isActive = true
         
         checkTitleLabel.topAnchor.constraint(equalTo: checkView.topAnchor).isActive = true
         checkTitleLabel.centerXAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
-        checkTitleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        checkTitleWidthAnchor = checkTitleLabel.widthAnchor.constraint(equalToConstant: 0)
+        checkTitleWidthAnchor?.isActive = true
         checkTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         checkLogo.leftAnchor.constraint(equalTo: checkTitleLabel.rightAnchor,constant: 10).isActive = true
         checkLogo.centerYAnchor.constraint(equalTo: checkTitleLabel.centerYAnchor).isActive = true
-        checkLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        checkLogoWidthAnchor = checkLogo.widthAnchor.constraint(equalToConstant: 0)
+        checkLogoWidthAnchor?.isActive = true
         checkLogo.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         checkOrderNumLabel.topAnchor.constraint(equalTo: checkTitleLabel.bottomAnchor, constant: 10).isActive = true
@@ -285,12 +322,28 @@ class TransactionsVC: UIViewController {
         checkItemsTableView.bottomAnchor.constraint(equalTo: checkSecondSeperatorView.topAnchor, constant: -15).isActive = true
         checkItemsTableView.centerXAnchor.constraint(equalTo: checkView.centerXAnchor).isActive = true
         
+        infoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        infoView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        infoView.leftAnchor.constraint(equalTo: checkView.rightAnchor,constant: 40).isActive = true
+        infoView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -20).isActive = true
+        
+        orderInfoLabel.topAnchor.constraint(equalTo: infoView.topAnchor, constant: 20).isActive = true
+        orderInfoLabel.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -20).isActive = true
+        orderInfoLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 20).isActive = true
+        orderInfoLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        orderTextInfo.topAnchor.constraint(equalTo: orderInfoLabel.bottomAnchor, constant: 5).isActive = true
+        orderTextInfo.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -20).isActive = true
+        orderTextInfo.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 20).isActive = true
+        orderTextInfo.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -20).isActive = true
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(listOfOrdersView)
         view.addSubview(checkView)
+        view.addSubview(infoView)
         checkView.addSubview(checkTitleLabel)
         checkView.addSubview(checkLogo)
         checkView.addSubview(checkOrderNumLabel)
@@ -302,6 +355,9 @@ class TransactionsVC: UIViewController {
         checkView.addSubview(checkTaxResultLabel)
         checkView.addSubview(checkSecondSeperatorView)
         checkView.addSubview(checkItemsTableView)
+        infoView.addSubview(orderInfoLabel)
+        infoView.addSubview(orderTextInfo)
+        
         listOfOrdersView.addSubview(orderHistoryLabel)
         listOfOrdersView.addSubview(orderLogo)
         listOfOrdersView.addSubview(seperatorView)
@@ -323,18 +379,31 @@ class TransactionsVC: UIViewController {
     }
     
     @objc fileprivate func handleDismiss() {
+        UIView.animate(withDuration: 0.3) {
+            self.checkWidthAnchor?.isActive = false
+            self.checkLogoWidthAnchor?.isActive = false
+            self.checkTitleWidthAnchor?.isActive = false
+            self.checkWidthAnchor = self.checkView.widthAnchor.constraint(equalToConstant: 0)
+            self.checkLogoWidthAnchor = self.checkLogo.widthAnchor.constraint(equalToConstant: 0)
+            self.checkTitleWidthAnchor = self.checkTitleLabel.widthAnchor.constraint(equalToConstant: 0)
+            
+            self.checkWidthAnchor?.isActive = true
+            self.checkLogoWidthAnchor?.isActive = true
+            self.checkTitleWidthAnchor?.isActive = true
+            self.view.layoutIfNeeded()
+        }
         dismiss(animated: true, completion: nil)
     }
     
     @objc public func temporaryOrderListArray()->[Order]{
         var array: [Order] = []
         let item1 = Order(id: "43773499", timestamp: "26.05.18", taxes: 30.0, totalPrice: 144.80, items: temporaryDesertsArray())
-        let item2 = Order(id: "35466577", timestamp: "29.05.18", taxes: 20.0, totalPrice: 44.80, items: temporaryDesertsArray())
-        let item3 = Order(id: "35464677", timestamp: "30.05.18", taxes: 40.0, totalPrice: 546.80, items: temporaryDesertsArray())
+        let item2 = Order(id: "35466577", timestamp: "29.05.18", taxes: 20.0, totalPrice: 44.80, items: temporaryReceiptArray())
+        let item3 = Order(id: "35464677", timestamp: "30.05.18", taxes: 40.0, totalPrice: 546.80, items: temporaryReceiptArray())
         let item4 = Order(id: "46565757", timestamp: "28.05.18", taxes: 50.0, totalPrice: 347.80, items: temporaryDesertsArray())
-        let item5 = Order(id: "56575766", timestamp: "16.05.18", taxes: 60.0, totalPrice: 144.80, items: temporaryDesertsArray())
+        let item5 = Order(id: "56575766", timestamp: "16.05.18", taxes: 60.0, totalPrice: 144.80, items: temporaryReceiptArray())
         let item6 = Order(id: "56575777", timestamp: "28.05.18", taxes: 70.0, totalPrice: 247.80, items: temporaryDesertsArray())
-        let item7 = Order(id: "65757578", timestamp: "40.05.18", taxes: 80.0, totalPrice: 244.80, items: temporaryDesertsArray())
+        let item7 = Order(id: "65757578", timestamp: "40.05.18", taxes: 80.0, totalPrice: 244.80, items: temporaryReceiptArray())
         let item8 = Order(id: "05664643", timestamp: "26.05.18", taxes: 90.0, totalPrice: 934.80, items: temporaryDesertsArray())
         
         
@@ -372,5 +441,49 @@ class TransactionsVC: UIViewController {
         array.append(item8)
         
         return array
+    }
+    
+    @objc public func temporaryReceiptArray()->[Item]{
+        var array: [Item] = []
+        let item1 = Item(id: "1", name: "Coca Cola", imageName: "burger1", price: 8.99, vat: 0.55, desc: "Nice", category: 6)
+        let item2 = Item(id: "2", name: "Milk", imageName: "burger2", price: 22.99, vat: 2.0, desc: "Nice", category: 6)
+        let item3 = Item(id: "3", name: "Jucie", imageName: "burger3", price: 44.99, vat: 4.65, desc: "Nice", category: 6)
+        let item4 = Item(id: "4", name: "Burder", imageName: "burger1", price: 2.99, vat: 0.20, desc: "Nice", category: 6)
+        let item5 = Item(id: "5", name: "Sundae", imageName: "burger2", price: 0.99, vat: 0.12, desc: "Nice", category: 6)
+    
+        
+        
+        array.append(item1)
+        array.append(item2)
+        array.append(item3)
+        array.append(item4)
+        array.append(item5)
+
+        
+        return array
+    }
+    
+    @objc public func updateCheckView(order: Order){
+        checkOrderNumLabel.text = "Order #:" + order.id!
+        checkDateLabel.text = "Date:" + order.timestamp!
+        checkTotalResultLabel.text = "-$" + String(order.totalPrice!)
+        checkTaxResultLabel.text = "-$" + String(order.taxes!)
+        listOfItems.removeAll()
+        listOfItems = order.items!
+        checkItemsTableView.reloadData()
+        UIView.animate(withDuration: 0.3) {
+            self.checkWidthAnchor?.isActive = false
+            self.checkLogoWidthAnchor?.isActive = false
+            self.checkTitleWidthAnchor?.isActive = false
+            self.checkWidthAnchor = self.checkView.widthAnchor.constraint(equalToConstant: 300)
+            self.checkLogoWidthAnchor = self.checkLogo.widthAnchor.constraint(equalToConstant: 40)
+            self.checkTitleWidthAnchor = self.checkTitleLabel.widthAnchor.constraint(equalToConstant: 100)
+            
+            self.checkWidthAnchor?.isActive = true
+            self.checkLogoWidthAnchor?.isActive = true
+            self.checkTitleWidthAnchor?.isActive = true
+            self.view.layoutIfNeeded()
+        }
+        
     }
 }

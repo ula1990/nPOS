@@ -31,6 +31,7 @@ extension TransactionsVC: UITableViewDataSource, UITableViewDelegate {
         }else if tableView == checkItemsTableView {
             let item = listOfItems[indexPath.row]
             let cell = checkItemsTableView.dequeueReusableCell(withIdentifier: checkItemsCellId, for: indexPath) as! CheckItemCell
+            cell.backgroundColor = UIColor(named: "background")
             cell.updateDataInCell(item: item)
             return cell
         }else{
@@ -43,13 +44,15 @@ extension TransactionsVC: UITableViewDataSource, UITableViewDelegate {
          if tableView == historyTableView{
             return 70
         }else if tableView == checkItemsTableView{
-            return 50
+            return 40
          }else{
             return 0
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == historyTableView{
+            let order = listOfOrders[indexPath.row]
+            updateCheckView(order: order)
             return historyTableView.deselectRow(at: indexPath, animated: true)
         }else if tableView == checkItemsTableView{
             return checkItemsTableView.deselectRow(at: indexPath, animated: true)
